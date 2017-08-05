@@ -1,0 +1,187 @@
+@each $title, $size in (xxs: 5px, xss: 7.5px, xs: 10px, s: 15px, m: 20px, l: 40px, xl: 80px){
+    .t-#{$title} {
+        top:$size;
+    }
+    .b-#{$title} {
+        bottom:$size;
+    }
+    .l-#{$title} {
+        left:$size;
+    }
+    .r-#{$title} {
+        right:$size;
+    }
+    .t--#{$title} {
+        top:-$size;
+    }
+    .b--#{$title} {
+        bottom:-$size;
+    }
+    .l--#{$title} {
+        left:-$size;
+    }
+    .r--#{$title} {
+        right:-$size;
+    }
+}
+@for $i from 1 through 20 {
+    .t#{$i * 5} {
+        top:$i * 5px;
+    }
+    .b#{$i * 5} {
+        bottom:$i * 5px;
+    }
+    .l#{$i * 5} {
+        left:$i * 5px;
+    }
+    .r#{$i * 5} {
+        right:$i * 5px;
+    }
+    .t--#{$i * 5} {
+        top:-$i * 5px;
+    }
+    .b--#{$i * 5} {
+        bottom:-$i * 5px;
+    }
+    .l--#{$i * 5} {
+        left:-$i * 5px;
+    }
+    .r--#{$i * 5} {
+        right:-$i * 5px;
+    }
+}
+.pos-rel {
+    position:relative;
+}
+.pos-abs {
+    position:absolute;
+}
+.pos-fixed {
+    position:fixed;
+}
+.pos-static {
+    position:static;
+}
+.pos-sticky {
+    position:sticky;
+}
+.pos-abs-full {
+    @extend .pos-abs;
+    @extend .t0;
+    @extend .l0;
+    @extend .w100p;
+    @extend .h100p;
+}
+.pos-abs-fit {
+    @extend .pos-abs;
+    @extend .t0;
+    @extend .b0;
+    @extend .l0;
+    @extend .r0;
+}
+.pos-abs-half {
+    @extend .pos-abs;
+    @extend .t50p;
+    @extend .l50p;
+}
+.pos-fixed-full {
+    @extend .pos-fixed;
+    @extend .t0;
+    @extend .l0;
+    @extend .w100p;
+    @extend .h100p;
+}
+.pos-tl {
+    @extend .pos-abs;
+    @extend .t0;
+    @extend .l0;
+}
+.pos-centered {
+    @extend .pos-abs;
+    @extend .t50p;
+    @extend .l50p;
+    transform:translate3d(-50%, -50%, 0);
+}
+.pos-centered-h {
+    @extend .pos-abs;
+    @extend .l50p;
+    transform:translateX(-50%);
+}
+.pos-centered-v {
+    @extend .pos-abs;
+    @extend .t50p;
+    transform:translateY(-50%);
+}
+.pos-tr {
+    @extend .pos-abs;
+    @extend .t0;
+    @extend .r0;
+}
+.pos-bl {
+    @extend .pos-abs;
+    @extend .b0;
+    @extend .l0;
+}
+.pos-br {
+    @extend .pos-abs;
+    @extend .b0;
+    @extend .r0;
+}
+.pos-tl-fixed {
+    @extend .pos-fixed;
+    @extend .t0;
+    @extend .l0;
+}
+.pos-tr-fixed {
+    @extend .pos-fixed;
+    @extend .t0;
+    @extend .r0;
+}
+.pos-bl-fixed {
+    @extend .pos-fixed;
+    @extend .b0;
+    @extend .l0;
+}
+.pos-br-fixed {
+    @extend .pos-fixed;
+    @extend .b0;
+    @extend .r0;
+}
+.t-auto {
+    top:auto;
+}
+.t0 {
+    top:0;
+}
+.b-auto {
+    bottom:auto;
+}
+.b0 {
+    bottom:0;
+}
+.l-auto {
+    left:auto;
+}
+.l0 {
+    left:0;
+}
+.r-auto {
+    right:auto;
+}
+.r0 {
+    right:0;
+}
+@for $i from 1 through 20 {
+    .t#{$i * 5}p {
+        top:($i * 5)#{%};
+    }
+    .b#{$i * 5}p {
+        bottom:($i * 5)#{%};
+    }
+    .l#{$i * 5}p {
+        left:($i * 5)#{%};
+    }
+    .r#{$i * 5}p {
+        right:($i * 5)#{%};
+    }
+}

@@ -1,0 +1,15 @@
+.copyright {
+    @extend .display-block;
+    @extend .c-gray;
+    @extend .text-center;
+
+    a {
+        @extend .display-inlineBlock;
+        @extend .ml-m;
+        @extend .transition-default;
+
+        &:hover {
+            @extend .c-white;
+        }
+    }
+}

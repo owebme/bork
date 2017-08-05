@@ -1,0 +1,130 @@
+#app {
+    .navbar {
+        @include accelerate();
+        will-change:background-color, transform, opacity;
+        transition:background-color .5s ease-in, transform 0.5s, opacity 0.5s ease;
+
+        @include res("xs") {
+            transition:background-color .3s ease-in, transform 0.3s $cubic4021, opacity 0.5s $cubic28 0.5s;
+        }
+    }
+}
+#app.home {
+    @extend .bg-black12;
+
+    &:not(.-ready){
+        .navbar {
+            @extend .opacity-0;
+        }
+        .header {
+            @extend .opacity-0;
+            transition:opacity 0.5s ease;
+        }
+        .slider {
+            .slider__item:not(.-active){
+                display:none;
+            }
+            img {
+                display:none;
+            }
+            @include res("xs") {
+                .slider__item.-active {
+                    .slider__content__xs {
+                        opacity:0;
+                        transform:translate3d(0, 20px, 0);
+                        transition:opacity 0.5s $cubic28 0.5s, transform 0.35s ease 0.5s;
+                    }
+                }
+                .slider__pagination__item__image,
+                .slider__pagination__progress {
+                    transition:none;
+                }
+            }
+        }
+        &.-show {
+            .navbar,
+            .header {
+                @extend .opacity-100;
+            }
+            .slider {
+                @include res("xs") {
+                    .slider__item.-active {
+                        img.-front {
+                            display:block;
+                        }
+                        .slider__content__xs {
+                            opacity:100;
+                            transform:translate3d(0, 0, 0);
+                        }
+                    }
+                }
+                @include res("min-sm") {
+                    .slider__item.-active {
+                        img {
+                            display:block;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+html.d-no-mobile {
+    products-grid .grid__item {
+        @include accelerate();
+        @extend .opacity-0;
+        @extend .willChange-tp;
+        transform:translateY(30px) translateZ(0);
+        transition:opacity 0.6s $cubic4021, transform 0.55s $cubic4021;
+
+        &.animated {
+            @extend .opacity-100;
+            @extend .transform-default;
+        }
+    }
+    .product__wrapper.-line:after,
+    promo-premium .top__line,
+    promo-premium .top:before,
+    promo-premium .top:after,
+    promo-premium .stand__title:before,
+    promo-gold .top__text[data-pos="top-left"]:before,
+    promo-gold .top__text[data-pos="bottom-right"]:before {
+        @extend .willChange-transform;
+        transform:scaleX(0) translateZ(0);
+        transition:transform 1.4s $cubic165;
+    }
+    promo-premium .product:before {
+        @extend .willChange-transform;
+        transform-origin:top center;
+        transform:scaleY(0) translateZ(0);
+        transition:transform 1.4s $cubic165;
+    }
+    .product__wrapper.-line:after,
+    promo-premium .top:before,
+    promo-premium .stand__title:before,
+    promo-gold .top__text[data-pos="top-left"]:before {
+        transform-origin:center left;
+        transition-delay:0.2s;
+    }
+    promo-premium .top:after,
+    promo-gold .top__text[data-pos="bottom-right"]:before {
+        transform-origin:center right;
+        transition-delay:0.4s;
+    }
+    promo-premium .top__line {
+        transform-origin:center right;
+    }
+    .product__wrapper.-line.animated:after,
+    promo-premium .top__line.animated,
+    promo-premium .top.animated:before,
+    promo-premium .top.animated:after,
+    promo-premium .stand__title.animated:before,
+    promo-premium .product.animated:before,
+    promo-gold .top.animated .top__text[data-pos="top-left"]:before,
+    promo-gold .top.animated .top__text[data-pos="bottom-right"]:before {
+        transform:scaleX(1) translateZ(0);
+    }
+    [data-scrollin]{
+        @extend .willChange-tp;
+    }
+}

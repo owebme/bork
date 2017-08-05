@@ -1,0 +1,9 @@
+.btn {
+    &-active {
+        transition:all 0.3s $cubic4021;
+
+        &:active {
+            @extend .scale-85;
+        }
+    }
+}

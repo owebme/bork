@@ -1,0 +1,24 @@
+{
+  "name": "afterlag-js",
+  "version": "2.0.2",
+  "homepage": "https://github.com/iserdmi/afterlag-js",
+  "author": {
+    "name": "Sergey Dmitriev",
+    "web": "http://serdmi.com"
+  },
+  "description": "Plugin for tracking page load lags.",
+  "main": "dist/afterlag.min.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "gulpfile.js",
+    "gulpfile.coffee",
+    "package.json",
+    "README.md",
+    "README_EN.md",
+    "LICENSE",
+    "src"
+  ]
+}

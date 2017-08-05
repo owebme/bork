@@ -1,0 +1,37 @@
+.footer__content {
+    @extend .display-block;
+    @extend .text-center;
+
+    &__title {
+        @extend .fontSize-22;
+        @extend .fontFamily-akzidenzExt;
+        @extend .mb-s;
+    }
+    &__opener {
+        @extend .flex-centered;
+        @extend .c-gray;
+        @extend .fontWeight-5;
+        @extend .fontSize-14;
+        @extend .text-uppercase;
+        @extend .letterSpacing-m;
+        @extend .cursor-pointer;
+        @extend .transition-default;
+
+        &:after {
+            @extend .content-empty;
+            @extend .display-block;
+            @include ui-basic("arrow_right", 7px, 12px);
+            transform:rotate(90deg);
+            @extend .ml-xs;
+            @extend .opacity-70;
+            @extend .transition-default;
+        }
+        &:hover {
+            @extend .c-white;
+
+            &:after {
+                @extend .opacity-100;
+            }
+        }
+    }
+}

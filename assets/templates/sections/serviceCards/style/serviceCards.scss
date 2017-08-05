@@ -1,0 +1,129 @@
+.service__cards {
+    &__item {
+        @extend .pos-rel;
+        @extend .display-block;
+        @extend .cursor-pointer;
+        @extend .aspectRatio-100;
+
+        &:hover {
+            &:after {
+                @extend .opacity-60;
+            }
+            .service__cards__item__line {
+                transform:scaleX(1) translateZ(0);
+            }
+        }
+        &:after {
+            @include abs();
+            @extend .content-empty;
+            @extend .bg-black2a;
+            @extend .opacity-50;
+            @extend .transition-soft;
+            @extend .willChange-opacity;
+            @extend .pointerEvents-none;
+        }
+        &__line {
+            @extend .pos-abs;
+            @extend .t25;
+            @extend .l50p;
+            @extend .w70;
+            @extend .h1px;
+            @extend .bg-white;
+            @extend .ml--35;
+            @extend .opacity-70;
+            @extend .pointerEvents-none;
+            @extend .zIndex-2;
+            transform:scaleX(0) translateZ(0);
+            @extend .transition-soft;
+            @extend .willChange-transform;
+        }
+        &__icon {
+            @extend .trY--xs;
+            @extend .zIndex-1;
+        }
+        &__cover {
+            @include abs();
+            @extend .overflow-hidden;
+
+            &:hover {
+                &:before {
+                    @extend .scale-110;
+                    filter:blur(15px) saturate(120%);
+                }
+            }
+            &:after {
+                @extend .content-empty;
+                @extend .pos-bl;
+                @extend .w100p;
+                @extend .h80;
+                background:linear-gradient(to top, rgba($black1b,1), rgba($black1b,0));
+            }
+            &:before {
+                @include abs();
+                @extend .bg-cover;
+                @extend .content-empty;
+                @extend .transition-soft;
+                will-change:transform, filter;
+            }
+            &[data-item="location"]{
+                &:before {
+                    background-image:url(/assets/images/service/first_card.png);
+                }
+                .service__cards__item__icon {
+                    @include abs(centered, 49px, 60px);
+                    @extend .bg-cover-center;
+                    @include ui-basic("location");
+                }
+            }
+            &[data-item="phone"]{
+                &:before {
+                    background-image:url(/assets/images/service/second_card.png);
+                }
+                .service__cards__item__icon {
+                    @include abs(centered, 54px, 54px);
+                    @extend .bg-cover-center;
+                    @include ui-basic("phone");
+                }
+            }
+            &[data-item="service"]{
+                &:before {
+                    background-image:url(/assets/images/service/third_card.png);
+                }
+                .service__cards__item__icon {
+                    @include abs(centered, 54px, 54px);
+                    @extend .bg-cover-center;
+                    @include ui-basic("service");
+                }
+            }
+            &[data-item="recipes"]{
+                &:before {
+                    background-image:url(/assets/images/service/fourth_card.png);
+                }
+                .service__cards__item__icon {
+                    @include abs(centered, 70px, 50px);
+                    @extend .bg-cover-center;
+                    @include ui-basic("recipes");
+                }
+            }
+        }
+        &__title {
+            @extend .pos-bl;
+            @extend .w100p;
+            @extend .pb25;
+            @extend .pl25;
+            @extend .text-uppercase;
+            @extend .fontWeight-5;
+            @extend .fontSize-14;
+            @extend .letterSpacing-l;
+            @extend .zIndex-1;
+
+            &:after {
+                @extend .content-empty;
+                @extend .pos-centered-v;
+                @extend .r-m;
+                margin-top:-14px;
+                @include ui-basic("next", 15px, 11px);
+            }
+        }
+    }
+}

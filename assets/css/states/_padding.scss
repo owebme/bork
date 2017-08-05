@@ -1,0 +1,94 @@
+@each $title, $size in (xxs: 5px, xss: 7.5px, xs: 10px, s: 15px, m: 20px, l: 40px, xl: 80px){
+    .p-#{$title} {
+        padding:$size;
+    }
+    .pl-#{$title} {
+        padding-left:$size;
+    }
+    .pr-#{$title} {
+        padding-right:$size;
+    }
+    .pt-#{$title} {
+        padding-top:$size;
+    }
+    .pb-#{$title} {
+        padding-bottom:$size;
+    }
+    .ptb-#{$title} {
+        padding-top:$size;
+        padding-bottom:$size;
+    }
+    .plr-#{$title} {
+        padding-left:$size;
+        padding-right:$size;
+    }
+}
+@for $i from 0 through 40 {
+    .p#{$i * 5} {
+        padding:$i * 5px;
+    }
+    .pl#{$i * 5} {
+        padding-left:$i * 5px;
+    }
+    .pr#{$i * 5} {
+        padding-right:$i * 5px;
+    }
+    .pt#{$i * 5} {
+        padding-top:$i * 5px;
+    }
+    .pb#{$i * 5} {
+        padding-bottom:$i * 5px;
+    }
+    .p#{$i * 5}p {
+        padding:$i * 5%;
+    }
+    .pl#{$i * 5}p {
+        padding-left:$i * 5%;
+    }
+    .pr#{$i * 5}p {
+        padding-right:$i * 5%;
+    }
+    .pt#{$i * 5}p {
+        padding-top:$i * 5%;
+    }
+    .pb#{$i * 5}p {
+        padding-bottom:$i * 5%;
+    }
+}
+@for $i from 1 through 10 {
+    .pt#{$i} {
+        padding-top:#{$i}px;
+    }
+    .pb#{$i} {
+        padding-bottom:#{$i}px;
+    }
+    .pl#{$i} {
+        padding-left:#{$i}px;
+    }
+    .pr#{$i} {
+        padding-right:#{$i}px;
+    }
+}
+.p0 {
+    padding:0;
+}
+.pt0 {
+    padding-top:0;
+}
+.pr0 {
+    padding-right:0;
+}
+.pb0 {
+    padding-bottom:0;
+}
+.pl0 {
+    padding-left:0;
+}
+.ptb0 {
+    padding-top:0;
+    padding-bottom:0;
+}
+.plr0 {
+    padding-left:0;
+    padding-right:0;
+}

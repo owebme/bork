@@ -1,0 +1,63 @@
+<product-specification>
+
+    <div if={ item.specification } onClick={ show } class="product__next">
+        <div class="product__next__label__overflow">
+            <div class="product__next__label">Перейти к<br> характеристикам</div>
+        </div>
+    </div>
+
+    <div class="specification" data-active="{ STATE.specification.active }">
+        <div onClick={ hide } class="specification__close"></div>
+        <div class="specification__column__left"></div>
+        <div class="specification__column__center"></div>
+        <div class="specification__column__right"></div>
+        <div class="specification__shema">
+            <img class="specification__shema__image" src="{ item.specification.shema }">
+        </div>
+        <div class="specification__container iscroll">
+            <div class="specification__content">
+                <div if={ i < 5 || STATE.specification.more } each={ item, i in item.specification.items } no-reorder class="specification__item">
+                    <p>{ item.title }</p>
+                    <span>{ item.value }</span>
+                </div>
+                <div class="specification__more">
+                    <div onClick={ more } class="specification__more__text" data-open="{ STATE.specification.more }">{ STATE.specification.more ? 'Свернуть' : 'Больше характеристик' }</div>
+                </div>
+                <a if={ item.specification.instruction } target="_blank" href="{ item.specification.instruction }" class="btn btn-m">Инструкция</a>
+            </div>
+        </div>
+    </div>
+
+<script>
+
+    var $ = this;
+
+    $.on("mount", function(){
+        $.STATE = $.parent.STATE;
+        $.scroll = new app.plugins.scroll.content($.root.querySelector(".iscroll"));
+        $.scroll.init();
+    });
+
+    $.on("update", function(){
+        $.item = $.parent.item;
+    });
+
+    $.on("updated", function(){
+        $.scroll.refresh();
+    });
+
+    $.show = function(){
+        $.STATE.specification.active = true;
+    };
+
+    $.hide = function(){
+        $.STATE.specification.active = false;
+    };
+
+    $.more = function(){
+        $.STATE.specification.more = !$.STATE.specification.more;
+    };
+
+</script>
+
+</product-specification>

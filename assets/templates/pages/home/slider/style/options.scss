@@ -1,0 +1,120 @@
+.home {
+    .slider {
+        &__options {
+            @extend .hidden-xs;
+            @extend .display-block;
+            @extend .pos-centered-h;
+            top:393px;
+            @extend .opacity-0;
+            @extend .willChange-opacity;
+            transition:opacity 0.8s $cubic28 0.25s;
+
+            &__item {
+                @extend .pos-rel;
+                @extend .w40;
+                @extend .h40;
+                @extend .mt50;
+                @extend .cursor-default;
+
+                &:hover {
+                    &:before {
+                        @extend .opacity-100;
+                        transform:translate3d(-50%, -50%, 0) scale(1);
+                    }
+                    .slider__options__item__title {
+                        @extend .opacity-100;
+                        transition:opacity 0.6s $cubic28;
+                        transition-delay:0.2s;
+
+                        &:after {
+                            transform:scaleX(1) translateZ(0);
+                            transition:transform 0.6s $cubic215;
+                            transition-delay:0.2s;
+                        }
+                    }
+                }
+                &:before {
+                    @extend .content-empty;
+                    @extend .pos-abs;
+                    @extend .t50p;
+                    @extend .l50p;
+                    @extend .w64;
+                    @extend .h64;
+                    transform:translate3d(-50%, -50%, 0) scale(0.4);
+                    @extend .mt-xs;
+                    @extend .opacity-0;
+                    @extend .bg-black;
+                    @extend .borderRadius-circle;
+                    transition:all 0.4s $cubic215;
+                }
+                &:after {
+                    @extend .content-empty;
+                    @extend .pos-centered-h;
+                    top:-75%;
+                    @extend .h75p;
+                    @extend .w1px;
+                    @extend .bg-white;
+                    @extend .opacity-20;
+                    @extend .bg-white;
+                    @extend .zIndex--1;
+                }
+                .ui-product__option {
+                    @extend .pos-centered;
+                    @extend .w64;
+                    @extend .h64;
+                    @extend .mt-xs;
+
+                    &:after {
+                        @extend .pos-centered;
+                    }
+                }
+                &__title {
+                    @include accelerate();
+                    @extend .pos-abs;
+                    @extend .t0;
+                    width:330px;
+                    @extend .opacity-0;
+                    @extend .letterSpacing-xs;
+                    @extend .pointerEvents-none;
+                    @extend .fontFamily-akzidenzExt;
+                    transition:opacity 0.4s $cubic28;
+
+                    &[data-pos="left"]{
+                        @extend .r100p;
+                        @extend .pr-l;
+                        @extend .pl-l;
+                        @extend .mr-l;
+                    }
+                    &[data-pos="right"]{
+                        @extend .l100p;
+                        @extend .pl-l;
+                        @extend .pr-m;
+                    }
+                    &[overlay]:before {
+                        @extend .content-empty;
+                        @extend .pos-abs;
+                        @extend .b--xs;
+                        @extend .l-m;
+                        @extend .w100p;
+                        height:calc(100% + 17px);
+                        background-image:linear-gradient(to right, rgba($black1b,.7) 50%, rgba($black1b,0));
+                        @extend .zIndex--1;
+                    }
+                    &:after {
+                        @extend .content-empty;
+                        @extend .pos-abs;
+                        @extend .b--xs;
+                        @extend .l-m;
+                        @extend .w100p;
+                        @extend .h1px;
+                        @extend .bg-white;
+                        @extend .opacity-30;
+                        transform-origin:center left;
+                        transform:scaleX(0) translateZ(0);
+                        transition:transform 0.5s $cubic215;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,218 @@
+@each $icon in (
+    auto, auto-stop, probe, removable, clean, humidity, gulf, square, control, recipes, foam, maintaining, glass, ir-control, nespresso, power, temperature, 2form, plus-minus, volume, mute, blade, size, thumb-up, prop, mixer, switz, time, verified, circle, filter, hoover, herb, aroma, many, non-stick, wine, x60, gold, 2bank, control-temp, pressing, cone
+){
+    .ui-options-#{$icon},
+    .ui-product__option[data-item="#{$icon}"]:after {
+        background:url('/assets/images/ui/options/#{$icon}.svg') no-repeat center center / cover;
+    }
+}
+@mixin ui-options($icon, $width: false, $height: false) {
+    @if $width {
+        width:#{$width};
+    }
+    @if $height {
+        height:#{$height};
+    }
+    @extend .ui-options-#{$icon};
+}
+.ui-product__option {
+    &:after {
+        @extend .content-empty;
+        @extend .display-block;
+    }
+    // g802
+    &[data-item="auto"]:after {
+        @extend .w75;
+        @extend .h32;
+    }
+    &[data-item="probe"]:after {
+        @extend .w56;
+        @extend .h32;
+        @extend .mt--xss;
+    }
+    &[data-item="removable"]:after {
+        @extend .w68;
+        @extend .h40;
+    }
+    // a802-rain
+    &[data-item="clean"]:after {
+        @extend .w70;
+        @extend .h40;
+    }
+    &[data-item="humidity"]:after {
+        @extend .w70;
+        @extend .h38;
+    }
+    &[data-item="gulf"]:after {
+        @extend .w70;
+        @extend .h40;
+    }
+    // q710
+    &[data-item="square"]:after {
+        @extend .w65;
+        @extend .h36;
+    }
+    &[data-item="ir-control"]:after {
+        @extend .w70;
+        @extend .h40;
+    }
+    // c830
+    &[data-item="control"]:after {
+        @extend .w80;
+        @extend .h48;
+    }
+    &[data-item="recipes"]:after {
+        @extend .w46;
+        @extend .h46;
+    }
+    &[data-item="foam"]:after {
+        @extend .w46;
+        @extend .h46;
+    }
+    &[data-item="nespresso"]:after {
+        @extend .w74;
+        @extend .h50;
+    }
+    // k810
+    &[data-item="maintaining"]:after {
+        @extend .w76;
+        @extend .h40;
+    }
+    &[data-item="glass"]:after {
+        @extend .w70;
+        @extend .h40;
+    }
+    &[data-item="temperature"]:after {
+        @extend .w54;
+        @extend .h54;
+    }
+    // x780
+    &[data-item="2form"]:after {
+        @extend .w42;
+        @extend .h42;
+    }
+    &[data-item="plus-minus"]:after {
+        @extend .w46;
+        @extend .h46;
+    }
+    &[data-item="volume"]:after {
+        @extend .w54;
+        @extend .h54;
+    }
+    // m780
+    &[data-item="power"]:after {
+        @extend .w56;
+        @extend .h56;
+    }
+    &[data-item="mute"]:after {
+        @extend .w54;
+        @extend .h54;
+    }
+    &[data-item="auto-stop"]:after {
+        @extend .w75;
+        @extend .h28;
+    }
+    // b780
+    &[data-item="blade"]:after {
+        @extend .w50;
+        @extend .h50;
+    }
+    &[data-item="size"]:after {
+        @extend .w48;
+        @extend .h48;
+    }
+    &[data-item="thumb-up"]:after {
+        @extend .w48;
+        @extend .h48;
+    }
+    // b782
+    &[data-item="prop"]:after {
+        @extend .w48;
+        @extend .h48;
+    }
+    &[data-item="mixer"]:after {
+        @extend .w40;
+        @extend .h40;
+    }
+    &[data-item="switz"]:after {
+        @extend .w40;
+        @extend .h40;
+    }
+    // t781
+    &[data-item="time"]:after {
+        @extend .w50;
+        @extend .h50;
+    }
+    // n785
+    &[data-item="verified"]:after {
+        @extend .w52;
+        @extend .h52;
+    }
+    // s800
+    &[data-item="circle"]:after {
+        @extend .w48;
+        @extend .h48;
+    }
+    &[data-item="filter"]:after {
+        @extend .w48;
+        @extend .h48;
+    }
+    // v601
+    &[data-item="hoover"]:after {
+        @extend .w44;
+        @extend .h44;
+        @extend .mt--2;
+        @extend .ml--2;
+    }
+    &[data-item="herb"]:after {
+        @extend .w44;
+        @extend .h44;
+    }
+    &[data-item="aroma"]:after {
+        @extend .w44;
+        @extend .h44;
+        @extend .mt--2;
+    }
+    // u802
+    &[data-item="many"]:after {
+        @extend .w42;
+        @extend .h42;
+    }
+    &[data-item="non-stick"]:after {
+        @extend .w38;
+        @extend .h38;
+        @extend .mt--3;
+    }
+    // z600
+    &[data-item="wine"]:after {
+        @extend .w40;
+        @extend .h40;
+    }
+    &[data-item="x60"]:after {
+        @extend .w48;
+        @extend .h48;
+    }
+    // c802 gold
+    &[data-item="control-temp"]:after {
+        @extend .w50;
+        @extend .h50;
+    }
+    &[data-item="2bank"]:after {
+        @extend .w40;
+        @extend .h40;
+    }
+    // z800 gold
+    &[data-item="pressing"]:after {
+        @extend .w40;
+        @extend .h40;
+    }
+    &[data-item="cone"]:after {
+        @extend .w40;
+        @extend .h40;
+    }
+    // k780 gold
+    &[data-item="gold"]:after {
+        @extend .w40;
+        @extend .h40;
+    }
+}

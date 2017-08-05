@@ -1,0 +1,255 @@
+.hero {
+    @extend .pos-rel;
+    @extend .h90v;
+    min-height:620px;
+    max-height:980px;
+    @extend .overflow-hidden;
+
+    &:before,
+    &:after {
+        @extend .content-empty;
+        @extend .pos-abs;
+        @extend .t0;
+        @extend .w1px;
+        @extend .h45p;
+        @extend .ml--1;
+        background:linear-gradient(to bottom, rgba($white,.3), rgba($white,0));
+        @extend .zIndex-2;
+    }
+    &:before {
+        left:33.33%
+    }
+    &:after {
+        right:33.33%
+    }
+    &__line {
+        @extend .pos-centered-h;
+        @extend .b0;
+        @extend .w1px;
+        @extend .h40p;
+    }
+    &__overlay {
+        @include abs();
+        @extend .bg-black;
+        @extend .opacity-0;
+        @extend .zIndex-3;
+        @extend .willChange-opacity;
+    }
+    &__content {
+        @extend .pos-rel;
+        @extend .h100p;
+        @extend .willChange-transform;
+    }
+    &__video {
+        @extend .display-block;
+        @extend .pos-centered-h;
+        @extend .w-auto;
+        @extend .h-auto;
+        @extend .minH-100p;
+        @extend .minW-100p;
+        @extend .zIndex-1;
+
+        &__container {
+            background-image:url(/assets/video/video.jpg);
+
+            &[data-play]{
+                &:before {
+                    @extend .display-none;
+                }
+            }
+            &:before {
+                @extend .content-empty;
+                @extend .display-block;
+                @include abs();
+                @extend .bg-cover;
+                background-image:url(/assets/video/video.jpg);
+                @extend .zIndex-2;
+
+                html.no-svg-clip-path & {
+                    @extend .display-none;
+                }
+            }
+            &:after {
+                @extend .content-empty;
+                @extend .display-block;
+                @include abs(fit);
+                @extend .bg-black;
+                @extend .opacity-30;
+                @extend .zIndex-2;
+            }
+        }
+    }
+    &__headline {
+        @extend .display-none;
+        @extend .opacity-0;
+        @extend .m0-auto;
+        max-width:600px;
+        @extend .fontFamily-bork;
+        font-size:35px;
+        line-height:35px;
+        letter-spacing:.006em;
+        transform:translate3d(0, 25px, 0);
+        @extend .fontWeight-normal;
+        @extend .willChange-tp;
+        transition:transform 1.2s $cubic2501, opacity 1.2s $cubic2501;
+        @extend .zIndex-3;
+
+        html.no-svg-clip-path & {
+            @extend .display-block;
+            @extend .opacity-100;
+            @extend .transform-default;
+        }
+        &.-show {
+            @extend .opacity-100;
+            @extend .transform-default;
+
+            .text__mask {
+                @extend .opacity-100;
+            }
+        }
+        &__wrapper {
+            @extend .pos-abs;
+            @extend .t40p;
+            @extend .w100p;
+            @extend .text-center;
+            @extend .zIndex-4;
+        }
+    }
+    .text__mask {
+        @extend .opacity-0;
+        @extend .pos-rel;
+        @extend .t--35;
+        @extend .overflow-hidden;
+        clip-path:url(#text__mask__svg__path);
+        min-height:160px;
+        @extend .willChange-opacity;
+        transition:opacity 1s $cubic2501 0.4s;
+
+        html.no-svg-clip-path & {
+            @extend .opacity-50;
+            @extend .c-white;
+            -webkit-text-fill-color:initial;
+            -webkit-background-clip:none;
+            @extend .fontFamily-sfdisplay;
+            @extend .fontWeight-6;
+            text-anchor:middle;
+            font-size:80px;
+            line-height:80px;
+            letter-spacing:-.005em;
+        }
+        &__screen {
+            @include abs(fit);
+            @extend .bg-white;
+            @extend .zIndex-1;
+        }
+        &__canvas__background {
+            @extend .pos-centered-h;
+            @extend .h-auto;
+            @extend .opacity-80;
+            filter:blur(20px) saturate(140%) brightness(180%);
+            @extend .zIndex-2;
+        }
+        &__svg {
+            @extend .pos-rel;
+            @extend .w100p;
+            @extend .h160;
+            @extend .zIndex-10;
+
+            &__content {
+                @extend .fontFamily-sfdisplay;
+                @extend .fontWeight-6;
+                text-anchor:middle;
+                font-size:80px;
+                line-height:80px;
+                letter-spacing:-.005em;
+            }
+        }
+    }
+}
+.page .hero {
+    @include res("xs"){
+        &:before,
+        &:after {
+            background:linear-gradient(to bottom, rgba($white,0), rgba($white,.2), rgba($white,.2), rgba($white,0), rgba($white,0));
+        }
+        &:before {
+            left:18.5%
+        }
+        &:after {
+            right:18.5%
+        }
+        &__line {
+            background:linear-gradient(to top, rgba($white,0), rgba($white,.3), rgba($white,0));
+        }
+        .hero__headline {
+            display:block;
+            font-size:22px;
+            line-height:22px;
+            transition-delay:1s;
+        }
+        .text__mask {
+            margin-top:23px;
+            transition-delay:1.4s;
+
+            html.no-svg-clip-path & {
+                font-size:45px;
+                line-height:45px;
+            }
+            &__svg {
+                height:80px;
+
+                &__content {
+                    font-size:45px;
+                    line-height:45px;
+                }
+            }
+        }
+    }
+    @include res("sm"){
+        &:before {
+            left:26.5%
+        }
+        &:after {
+            right:26.5%
+        }
+    }
+    @include res("md"){
+        &:before {
+            left:32.5%
+        }
+        &:after {
+            right:32.5%
+        }
+    }
+    @include res("sm-md"){
+        &__line {
+            background:linear-gradient(to top, rgba($white,0), rgba($white,.3), rgba($white,0));
+        }
+        .hero__headline {
+            font-size:31px;
+            line-height:31px;
+        }
+        .text__mask {
+            margin-top:15px;
+
+            html.no-svg-clip-path & {
+                font-size:68px;
+                line-height:68px;
+            }
+            &__svg {
+                height:128px;
+
+                &__content {
+                    font-size:68px;
+                    line-height:68px;
+                }
+            }
+        }
+    }
+    @include res("max-md"){
+        html.d-mobile & {
+            min-height:100vh;
+            max-height:100vh;
+        }
+    }
+}

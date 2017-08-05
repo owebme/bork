@@ -1,0 +1,107 @@
+.home {
+    .slider {
+        &__pagination {
+            @extend .pos-rel;
+            @extend .mt-xs;
+            @extend .zIndex-1;
+
+            &__item {
+                @extend .pos-rel;
+                @extend .w40;
+                @extend .h54;
+                @extend .opacity-70;
+                @extend .transition-default;
+
+                &:not(.-active):hover {
+                    @extend .opacity-100;
+                    @extend .cursor-pointer;
+                }
+                &:before {
+                    content:attr(data-num);
+                    @extend .fontSize-14;
+                    @extend .pos-centered;
+                    @extend .transition-ease;
+                }
+                &.-active {
+                    @extend .opacity-100;
+                    @extend .pointerEvents-none;
+
+                    &:before {
+                        @extend .opacity-0;
+                    }
+                    .slider__pagination__item__image {
+                        @extend .opacity-100;
+                        transform:translate3d(-50%, -50%, 0) scale(1);
+                        transition-delay:0.2s;
+                    }
+                }
+                &__image {
+                    @extend .pos-abs;
+                    @extend .t50p;
+                    @extend .l50p;
+                    @extend .w40;
+                    @extend .h40;
+                    @extend .bg-cover;
+                    @extend .borderRadius-circle;
+                    @extend .opacity-0;
+                    @extend .willChange-tp;
+                    transform:translate3d(-50%, -50%, 0) scale(0.8);
+                    transition:opacity 0.5s $cubic4021, transform 0.8s $cubic28;
+                }
+            }
+            &__progress {
+                @include accelerate(true);
+                @extend .pos-abs;
+                @extend .t0;
+                @extend .l50p;
+                margin-top:2px;
+                margin-left:-24px;
+                @extend .w48;
+                @extend .h48;
+                @extend .borderRadius-circle;
+                @extend .willChange-transform;
+                transition:transform 0.7s ease;
+                @extend .pointerEvents-none;
+                box-shadow:0 0 0 2px rgba($orangeLight,.5);
+
+                &__item {
+                    @include abs();
+                    transform:scale(2.33) rotate(-90deg);
+                }
+                svg {
+                    @extend .pos-centered;
+                }
+                circle {
+                    stroke:$orangeLight;
+                    stroke-width:1px;
+                    will-change:stroke-dashoffset;
+                    transition:stroke-dashoffset 0.1s linear;
+                }
+            }
+        }
+    }
+}
+
+body > .home {
+    @include res("xs") {
+        .slider {
+            &__pagination {
+                &__progress {
+                    box-shadow:0 0 0 2px rgba($orange,.7);
+
+                    svg {
+                        opacity:0;
+                    }
+                }
+                &__item {
+                    opacity:1;
+
+                    &__image {
+                        width:38px;
+                        height:38px;
+                    }
+                }
+            }
+        }
+    }
+}

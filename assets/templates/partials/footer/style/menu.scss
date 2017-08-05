@@ -1,0 +1,46 @@
+.footer__menu {
+    &__title {
+        @extend .fontFamily-akzidenzExt;
+        @extend .text-uppercase;
+        @extend .mb-s;
+
+        &.-lines {
+            @extend .pos-rel;
+            @extend .mt30;
+            @extend .text-center;
+
+            &:after,
+            &:before {
+                @extend .content-empty;
+                @extend .pos-centered-v;
+                @extend .w40p;
+                @extend .h1px;
+                background:linear-gradient(to left, rgba($white,0), rgba($white,.3), rgba($white,0));
+            }
+            &:before {
+                @extend .l0;
+                @extend .ml--xl;
+            }
+            &:after {
+                @extend .r0;
+                @extend .mr--xl;
+            }
+        }
+    }
+    &__items {
+        @extend .listStyle-none;
+    }
+    &__item {
+        margin-bottom:12px;
+
+        a {
+            @extend .c-gray;
+            @extend .fontSize-17;
+            @extend .transition-default;
+
+            &:hover {
+                @extend .c-white;
+            }
+        }
+    }
+}

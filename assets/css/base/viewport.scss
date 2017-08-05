@@ -1,0 +1,42 @@
+#viewport-emitter {
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    visibility: hidden;
+    z-index: -1;
+    x-content: "large"
+}
+
+#viewport-emitter::before {
+    content: "large"
+}
+
+@media only screen and (min-width: 1442px) {
+    #viewport-emitter {
+        x-content: "xlarge"
+    }
+    #viewport-emitter::before {
+        content: "xlarge"
+    }
+}
+
+@media only screen and (max-width: 1068px) {
+    #viewport-emitter {
+        x-content: "medium"
+    }
+    #viewport-emitter::before {
+        content: "medium"
+    }
+}
+
+@media only screen and (max-width: 735px) {
+    #viewport-emitter {
+        x-content: "small"
+    }
+    #viewport-emitter::before {
+        content: "small"
+    }
+}

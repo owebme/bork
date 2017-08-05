@@ -1,0 +1,15 @@
+a {
+	@extend .textDecoration-none;
+}
+.link {
+	@extend .textDecoration-none;
+	@extend .transition-default;
+    @extend .cursor-pointer;
+}
+.link-hover {
+	@extend .link;
+
+	html.m-no-touch &:hover {
+		@extend .opacity-85;
+	}
+}

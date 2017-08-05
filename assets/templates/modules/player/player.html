@@ -1,0 +1,81 @@
+<section-player class="player" data-open="false">
+
+    <div ref="container" name="container" class="player__container">
+        <div class="player__screen"></div>
+    </div>
+    <div onClick={ hide } onUpdate="none" class="player__close"></div>
+
+<script>
+
+    var $ = this;
+
+    $.active = false;
+
+    $.on("mount", function(){
+        $.container = $.refs && $.refs.container && $$($.refs.container) || $$($.container);
+    });
+
+    $.load = function(url){
+        var result = $.convertLinks(url);
+        if (!result.valid) return;
+
+        var url = result.url;
+
+        if (url.match(/youtube/)){
+            url += '?autoplay=1&color=white&controls=0&showinfo=0';
+        }
+        else if (url.match(/vimeo/)){
+            url += '?autoplay=1&title=0&byline=0';
+        }
+        var $frame = $$('<iframe class="player__screen" type="text/html" src="'+ url +'" frameborder="0" allowfullscreen/>');
+
+        _.onEndTransition($.root, function(){
+            $.container.html($frame);
+        });
+    };
+
+    $.show = function(url){
+        if (!url || $.active) return;
+        $.active = true;
+        $.load(url);
+        $.trigger("show");
+        $.root.setAttribute("data-open", true);
+    };
+
+    $.convertLinks = function(url){
+        var valid = false,
+            regexps = {
+            youtube: /(https?:\/\/(?:www\.|(?!www)))?(?:[0-9A-Z-]+\.)?(?:youtu\.be\/|youtube\.com\S*[^\w\-\s])([\w\-]{11})(&.+)?/gi,
+            vimeo: /(https?:\/\/(?:www\.|(?!www)))?vimeo.com\/(\d+)/
+        }
+
+        if (url.match(regexps.youtube)){
+            url = url.replace(/^www\./g, '').replace(regexps.youtube, '//www.youtube.com/embed/$2');
+            valid = true;
+        }
+
+        if (url.match(regexps.vimeo)){
+            url = url.replace(/^www\./g, '').replace(regexps.vimeo, '//player.vimeo.com/video/$2');
+            valid = true;
+        }
+
+        return {
+            url: url,
+            valid: valid
+        }
+    };
+
+    $.hide = function(){
+        $.trigger("hide");
+        $.root.setAttribute("data-open", false);
+
+        _.onEndTransition($.root, function(){
+            $.container.html('<div class="player__screen"></div>');
+            $.active = false;
+        });
+    };
+
+
+</script>
+
+</section-player>

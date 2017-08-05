@@ -1,0 +1,140 @@
+@each $title, $size in (xxs: 5px, xss: 7.5px, xs: 10px, s: 15px, m: 20px, l: 40px, xl: 80px){
+    .m-#{$title} {
+        margin:$size;
+    }
+    .ml-#{$title} {
+        margin-left:$size;
+    }
+    .mr-#{$title} {
+        margin-right:$size;
+    }
+    .mt-#{$title} {
+        margin-top:$size;
+    }
+    .mb-#{$title} {
+        margin-bottom:$size;
+    }
+    .mtb-#{$title} {
+        margin-top:$size;
+        margin-bottom:$size;
+    }
+    .mlr-#{$title} {
+        margin-left:$size;
+        margin-right:$size;
+    }
+    .ml--#{$title} {
+        margin-left:-$size;
+    }
+    .mr--#{$title} {
+        margin-right:-$size;
+    }
+    .mt--#{$title} {
+        margin-top:-$size;
+    }
+    .mb--#{$title} {
+        margin-bottom:-$size;
+    }
+}
+@for $i from 0 through 40 {
+    .m#{$i * 5} {
+        margin:$i * 5px;
+    }
+    .ml#{$i * 5} {
+        margin-left:$i * 5px;
+    }
+    .mr#{$i * 5} {
+        margin-right:$i * 5px;
+    }
+    .mt#{$i * 5} {
+        margin-top:$i * 5px;
+    }
+    .mb#{$i * 5} {
+        margin-bottom:$i * 5px;
+    }
+    .m#{$i * 5}p {
+        margin:$i * 5%;
+    }
+    .ml#{$i * 5}p {
+        margin-left:$i * 5%;
+    }
+    .mr#{$i * 5}p {
+        margin-right:$i * 5%;
+    }
+    .mt#{$i * 5}p {
+        margin-top:$i * 5%;
+    }
+    .mb#{$i * 5}p {
+        margin-bottom:$i * 5%;
+    }
+    .ml--#{$i * 5} {
+        margin-left:-$i * 5px;
+    }
+    .mr--#{$i * 5} {
+        margin-right:-$i * 5px;
+    }
+    .mt--#{$i * 5} {
+        margin-top:-$i * 5px;
+    }
+    .mb--#{$i * 5} {
+        margin-bottom:-$i * 5px;
+    }
+}
+@for $i from 1 through 10 {
+    .mt#{$i} {
+        margin-top:#{$i}px;
+    }
+    .mb#{$i} {
+        margin-bottom:#{$i}px;
+    }
+    .ml#{$i} {
+        margin-left:#{$i}px;
+    }
+    .mr#{$i} {
+        margin-right:#{$i}px;
+    }
+    .mt--#{$i} {
+        margin-top:-#{$i}px;
+    }
+    .mb--#{$i} {
+        margin-bottom:-#{$i}px;
+    }
+    .ml--#{$i} {
+        margin-left:-#{$i}px;
+    }
+    .mr--#{$i} {
+        margin-right:-#{$i}px;
+    }
+}
+.m0 {
+    margin:0;
+}
+.m-auto {
+    margin:auto;
+}
+.m0-auto {
+    margin:0 auto;
+}
+.mlr-auto {
+    margin-left:auto;
+    margin-right:auto;
+}
+.mt0 {
+    margin-top:0;
+}
+.mr0 {
+    margin-right:0;
+}
+.mb0 {
+    margin-bottom:0;
+}
+.ml0 {
+    margin-left:0;
+}
+.mtb0 {
+    margin-top:0;
+    margin-bottom:0;
+}
+.mlr0 {
+    margin-left:0;
+    margin-right:0;
+}

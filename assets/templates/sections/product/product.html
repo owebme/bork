@@ -1,0 +1,132 @@
+<section-product>
+
+    <div class="loader"></div>
+    <product-gallery items={ item.gallery }></product-gallery>
+    <div class="overlay"></div>
+    <div onClick={ hide } onUpdate="none" class="close">
+        <div class="close__icon">
+            <svg xmlns="http://www.w3.org/2000/svg">
+                <polygon points="10,16 16,16 16,10 18,10 18,16 24,16 24,18 18,18 18,24 16,24 16,18 10,18"></polygon>
+            </svg>
+        </div>
+    </div>
+    <div class="product__label -tr">
+        <div class="product__label__text">{ item.title }</div>
+    </div>
+    <product-gallery-nav></product-gallery-nav>
+    <product-specification></product-specification>
+    <product-columns></product-columns>
+
+<script>
+
+    var $ = this;
+
+    $.scope = $$(this.root);
+
+    $.item = {};
+
+    $.entities = {
+        features: null,
+        progress: null,
+        close: null
+    };
+
+    $.default = function(){
+        return {
+            slide: 1,
+            currentSlide: 1,
+            prevSlide: 1,
+            specification: {
+                active: false,
+                more: false
+            },
+            loading: false
+        }
+    };
+
+    $.STATE = $.default();
+
+    $.on("mount", function(){
+        $.entities.features = $.scope.find(".product__features");
+        $.entities.progress = $.scope.find(".nav__status__progress");
+        $.entities.close = $.scope.find(".close");
+
+        if (!app.device.isMobile){
+            $.scope.find(".product__options").on("mouseenter mouseleave", ".product__options__item", function(e){
+                var $item = $.entities.features.find(".product__features__item:eq(" + $$(e.currentTarget).data("index") + ")");
+
+                if (e.type === "mouseenter"){
+                    $item.addClass("-show")
+                    .siblings()
+                    .removeClass("-show");
+                    $.entities.features.addClass("-extend");
+                }
+                else {
+                    $item.removeClass("-show");
+                    $.entities.features.removeClass("-extend");
+                }
+            });
+        }
+    });
+
+    $.show = function(id, callback){
+        if ($.active) return;
+
+        app.$dom.body.addClass("no-scroll");
+        $.scope.addClass("-prepare");
+
+        $.imageLoader = new app.plugins.imagesLoaded({
+            container: $.root
+        })
+
+        $.one("updated", function(){
+            $.imageLoader.load();
+        });
+
+        RAF(function(){
+            $.update({
+                active: true,
+                STATE: _.extend($.STATE, $.default()),
+                item: app.store[id]
+            });
+        });
+
+        _.onLoadImage(app.store[id].gallery[0], function(){
+            $afterlag.run(function(){
+                $.scope.addClass("-show");
+
+                _.onEndTransition($.entities.close, function(){
+                    $.scope.addClass("-ready")
+                    .removeClass("-show");
+                    if (_.isFunction(callback)) callback();
+                });
+            }, {
+                iterations: 3,
+                timeout: 650
+            });
+        });
+    };
+
+    $.hide = function(){
+        if (!$.active) return;
+        $.active = false;
+
+        RAF(function(){
+            $.scope.addClass("-hide")
+            .removeClass("-ready");
+
+            _.onEndTransition($.entities.progress, function(){
+                app.$dom.body.removeClass("no-scroll");
+                $.scope.removeClass("-prepare");
+                $.scope.removeClass("-hide");
+                $.update({
+                    item: {}
+                });
+                $.imageLoader.destroy();
+            });
+        });
+    };
+
+</script>
+
+</section-product>

@@ -1,0 +1,59 @@
+<product-gallery-nav class="nav__arrows">
+
+    <div class="nav__arrows__items">
+        <div onClick={ nav.prevSlide } class="nav__arrows__item -left"></div>
+        <div onClick={ nav.nextSlide } class="nav__arrows__item -right"></div>
+    </div>
+
+<script>
+
+    var $ = this;
+
+    $.on("mount", function(){
+        $.STATE = $.parent.STATE;
+        $.entities = $.parent.entities;
+    });
+
+    $.on("update", function(){
+        $.item = $.parent.item;
+    });
+
+
+    $.nav = {
+        prevSlide: function(e){
+            e.preventUpdate = true;
+            if ($.STATE.loading) return;
+            $.STATE.loading = true;
+            RAF(function(){
+                $.nav._progress();
+                var slide = $.STATE.slide - 1;
+                $.STATE.slide = slide < 1 ? $.item.gallery.length : slide;
+                $.parent.update();
+            });
+        },
+        nextSlide: function(e){
+            e.preventUpdate = true;
+            if ($.STATE.loading) return;
+            $.STATE.loading = true;
+            RAF(function(){
+                $.nav._progress();
+                var slide = $.STATE.slide + 1;
+                $.STATE.slide = slide > $.item.gallery.length ? 1 : slide;
+                $.parent.update();
+            });
+        },
+        _progress: function(){
+            $.STATE.prevSlide = $.STATE.slide;
+            $.entities.progress.addClass("-loading");
+            _.onEndAnimation($.entities.progress, function(){
+                $.STATE.currentSlide = $.STATE.slide;
+                $.parent.update();
+                $.entities.progress.removeClass("-loading");
+                $.STATE.loading = false;
+            });
+        }
+    };
+
+</script>
+
+</product-gallery-nav>

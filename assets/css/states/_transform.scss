@@ -1,0 +1,31 @@
+@each $title, $size in (xxs: 5px, xss: 7.5px, xs: 10px, s: 15px, m: 20px, l: 40px, xl: 80px){
+    .trY-#{$title} {
+        transform:translateY($size) translateZ(0);
+    }
+    .trX-#{$title} {
+        transform:translateX($size) translateZ(0);
+    }
+    .trY--#{$title} {
+        transform:translateY(-$size) translateZ(0);
+    }
+    .trX--#{$title} {
+        transform:translateX(-$size) translateZ(0);
+    }
+}
+@for $i from 1 through 40 {
+    .scale-#{$i * 5} {
+        transform:translate3d(0, 0, 0) scale(($i * 5) / 100);
+    }
+}
+.scale3d-100 {
+    transform:translate3d(0, 0, 0) scale3d(1, 1, 1);
+}
+.scale-0 {
+    transform:translate3d(0, 0, 0) scale(0);
+}
+.transform-default {
+	transform:translateZ(0);
+}
+.transform-none {
+    transform:none;
+}

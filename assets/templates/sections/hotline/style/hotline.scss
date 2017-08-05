@@ -1,0 +1,21 @@
+.hotline {
+    @extend .flex-centered;
+    height:175px;
+    border-top:1px solid rgba($white,.15);
+    border-bottom:1px solid rgba($white,.15);
+    @extend .mtb-l;
+
+    &__phone {
+        @extend .fontSize-18;
+        @extend .text-center;
+        @extend .pb-xs;
+        @extend .fontWeight-3;
+
+        a {
+            @extend .fontSize-22;
+            @extend .fontWeight-normal;
+            @extend .fontFamily-akzidenzExt;
+            @extend .pl-s;
+        }
+    }
+}

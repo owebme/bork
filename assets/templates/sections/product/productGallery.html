@@ -1,0 +1,21 @@
+<product-gallery class="gallery__items">
+
+    <div each={ item, i in opts.items } no-reorder class="gallery__item { -activeSlide : STATE.slide == i + 1, -hideSlide : i + 2 < STATE.slide && i != 0, -currentSlide : STATE.currentSlide == i + 1, -prevSlide : STATE.prevSlide == i + 1 }">
+        <div class="gallery__item__cover" style="background-image:url({ item });" data-progressive-image></div>
+        <div class="gallery__item__left bg" style="background-image:url({ item });" data-progressive-image></div>
+        <div class="gallery__item__center bg" style="background-image:url({ item });" data-progressive-image></div>
+        <div class="gallery__item__right bg" style="background-image:url({ item });" data-progressive-image></div>
+    </div>
+
+<script>
+
+    var $ = this;
+
+    $.on("mount", function(){
+        $.STATE = $.parent.STATE;
+        $.entities = $.parent.entities;
+    });
+
+</script>
+
+</product-gallery>

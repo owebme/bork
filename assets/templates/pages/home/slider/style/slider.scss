@@ -1,0 +1,198 @@
+.home {
+    .slider {
+        @extend .pos-rel;
+        @extend .overflow-hidden;
+
+        &__noise {
+            @extend .hidden-xs;
+            @include abs();
+            @extend .opacity-0;
+            @extend .zIndex-10;
+            @extend .pointerEvents-none;
+            @extend .willChange-opacity;
+            transition:opacity 0.6s $cubic28;
+
+            html.d-safari & {
+                @extend .display-none;
+            }
+            &:after {
+                @extend .content-empty;
+                @extend .effect-noise;
+            }
+        }
+        &.-loading {
+            @extend .pointerEvents-none;
+
+            .slider__noise {
+                @extend .opacity-100;
+            }
+        }
+        &__items {
+            @include abs();
+        }
+        &__item {
+            @extend .display-block;
+            @include abs();
+
+            &.-active {
+                @extend .zIndex-1;
+
+                .slider {
+                    &__image {
+                        &.-front {
+                            @extend .opacity-0;
+                        }
+                        &.-blur {
+                            @extend .opacity-100;
+                            transform:translate3d(-50%, -50%, 0) scale(1.02);
+                            transition:opacity 0.7s $cubic28, transform 0.7s $cubic28;
+                        }
+                    }
+                    &__container {
+                        transition:opacity 0.6s $cubic28;
+                    }
+                    &__title {
+                        &__fill {
+                            transition:width 0.5s ease;
+                        }
+                        &__pointer:after {
+                            transition:transform 0.5s ease;
+                        }
+                    }
+                    &__options {
+                        @extend .opacity-100;
+                    }
+                }
+                &.-ready {
+                    .slider {
+                        &__image {
+                            &.-front {
+                                @extend .opacity-100;
+                                transition:opacity 2s $cubic28 1.3s;
+                            }
+                        }
+                        &__container {
+                            @extend .opacity-100;
+                            transition:opacity 1.4s $cubic28;
+                        }
+                        &__title {
+                            &__fill {
+                                @extend .w100p;
+                                transition:width 1.5s $cubic28;
+                                transition-delay:0.5s;
+                            }
+                            &__pointer:after {
+                                transform:scaleX(1);
+                                transition:transform 1s $cubic28;
+                                transition-delay:0.8s;
+                            }
+                        }
+                    }
+                }
+            }
+            &.-currentSlide {
+                @extend .zIndex-2;
+            }
+        }
+        &__image {
+            @extend .opacity-0;
+            @include accelerate();
+            @extend .pos-centered;
+            @extend .mt--35;
+            @extend .h-auto;
+            margin-left:36px;
+            @extend .willChange-opacity;
+            @extend .pointerEvents-none;
+            transition:opacity 0s 1s;
+
+            &.-blur {
+                @extend .hidden-xs;
+            }
+        }
+        &__container {
+            @extend .hidden-xs;
+            @extend .opacity-0;
+            @extend .pos-centered-h;
+            @extend .t0;
+            width:$grid_size_xmd;
+            @extend .h100p;
+            @extend .willChange-opacity;
+        }
+        &__column {
+            @extend .w50p;
+            @extend .h100p;
+
+            &[data-pos="left"] {
+                @extend .pos-tl;
+            }
+            &[data-pos="right"] {
+                @extend .pos-tr;
+            }
+            &[data-column="content"]{
+                &:hover {
+                    .slider {
+                        &__basket {
+                            &:before {
+                                transform:scaleX(1) translateZ(0);
+                                transition-delay:0.4s;
+                            }
+                            &__button {
+                                @extend .scale-100;
+                                @extend .opacity-100;
+                                transition-delay:0.25s;
+                            }
+                            &__label {
+                                @extend .transform-default;
+                                @extend .opacity-100;
+                                transition-delay:0.25s;
+                            }
+                        }
+                    }
+                }
+            }
+            &[data-column="photo"]{
+                @extend .hidden-xs;
+
+                &:hover {
+                    @extend .ui-more[show];
+                }
+            }
+        }
+        &__play {
+            @extend .pos-centered;
+        }
+    }
+}
+
+body > .home {
+    @include res("xs") {
+        .slider__item {
+            &.-active {
+                .slider__content__xs {
+                    opacity:1;
+                }
+            }
+        }
+        .slider__image.-front {
+            opacity:0.01;
+            margin:0;
+            max-width:100%;
+            min-height:100%;
+            transition:opacity 0.9s $cubic4021 0s !important;
+        }
+        .slider__content__xs {
+            opacity:0;
+            transition:opacity 0.9s $cubic4021;
+        }
+        .slider__item[data-pos="left"]{
+            .slider__image.-front {
+                @include object("cover", "25%");
+            }
+        }
+        .slider__item[data-pos="right"]{
+            .slider__image.-front {
+                @include object("cover", "70%");
+            }
+        }
+    }
+}

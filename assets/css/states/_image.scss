@@ -1,0 +1,34 @@
+html.m-progressive-image {
+    .progressive-image,
+    [data-progressive-image]{
+        &,
+        &:before,
+        &:after {
+            background-image:none !important;
+        }
+    }
+}
+.bg-cover {
+	background-position:top center;
+	background-repeat:no-repeat;
+	background-size:cover;
+}
+.bg-contain {
+	background-position:top center;
+	background-repeat:no-repeat;
+	background-size:contain;
+}
+.bg-cover-center {
+	background-position:center center;
+	background-repeat:no-repeat;
+	background-size:cover;
+}
+.bg-none {
+	background:none;
+}
+.bg-transparent {
+    background:transparent;
+}
+.bg-image-none {
+    background-image:none;
+}

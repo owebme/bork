@@ -1,0 +1,146 @@
+@mixin abs($pos: absolute, $width:false, $height:false) {
+    @if $pos == "absolute" {
+        @extend .pos-abs-full;
+    }
+    @else if $pos == "fit" {
+        @extend .pos-abs-fit;
+    }
+    @else if $pos == "fixed" {
+        @extend .pos-fixed-full;
+    }
+    @else if $pos == "centered" {
+        @extend .pos-abs-half;
+        width:#{$width};
+        height:#{$height};
+        margin:#{-$height/2} 0 0 #{-$width/2};
+    }
+}
+@mixin flex($direction, $justify, $align) {
+    @extend .flex;
+    @if $direction {
+        @extend .flexDirection-#{$direction};
+    }
+    @if $justify {
+        @extend .justifyContent-#{$justify};
+    }
+    @if $align {
+        @extend .alignItems-#{$align};
+    }
+}
+@mixin animation($name, $fn: linear, $duration: .3s, $delay: false, $mode: forwards) {
+    animation-name:$name;
+    animation-timing-function:$fn;
+    animation-duration:$duration;
+    @if $mode == "infinite" {
+        animation-iteration-count:$mode;
+    }
+    @else {
+        animation-fill-mode:$mode;
+    }
+    @if $delay {
+        animation-delay:$delay;
+    }
+}
+@mixin transition($options, $name){
+    $props: map-get($options, $name);
+
+    @if map-get($props, transform) && map-get($props, opacity) {
+        transition:transform map-get($props, transform), opacity map-get($props, opacity);
+    }
+    @else if map-get($props, transform) {
+        transition:transform map-get($props, transform);
+    }
+    @else if map-get($props, opacity) {
+        transition:opacity map-get($props, opacity);
+    }
+}
+@mixin font($fontSize: false, $lineHeight: false){
+    @if $fontSize {
+        font-size:#{$fontSize}px;
+    }
+    @if $lineHeight {
+        line-height:#{$lineHeight}px;
+    }
+}
+@mixin clip($duration: .9s, $delay: false) {
+    @extend .willChange-clip;
+    transition-timing-function:$cubic4021;
+    transition-duration:$duration;
+    @if $delay {
+        transition-delay:$delay;
+    }
+    transition-property:clip;
+}
+@mixin accelerate($transition: false) {
+    @extend .accelerate;
+    @if $transition {
+        @extend .transform-default;
+    }
+}
+@mixin perspective($value: false) {
+    .d-no-safari &,
+    .d-phone.d-no-ios & {
+        @if $value {
+            perspective:#{$value}px;
+        }
+        @else {
+            @extend .perspective-1000;
+        }
+    }
+}
+@mixin textTruncate($width: false, $height: false, $column: false) {
+    @extend .overflow-hidden;
+    @extend .text-ellipsis;
+    @if $width {
+        max-width:#{$width};
+    }
+    @if $height {
+        display:-webkit-box;
+        -webkit-line-clamp:#{$column};
+        -webkit-box-orient:vertical;
+        max-height:#{$height};
+    }
+    @else {
+        @extend .nowrap;
+    }
+}
+@mixin object($fit: false, $pos: false) {
+    @if $fit {
+        object-fit:#{$fit};
+    }
+    @if $pos {
+        object-position:#{$pos};
+    }
+}
+@mixin res($media) {
+    @if $media == xs {
+        @media screen and (min-width: $w320) and (max-width: $w767) { @content; }
+    }
+    @else if $media == max-xs {
+        @media screen and (max-width: $w767) { @content; }
+    }
+    @else if $media == xs-sm {
+        @media screen and (min-width: $w320) and (max-width: $w991) { @content; }
+    }
+    @else if $media == sm {
+        @media screen and (min-width: $w768) and (max-width: $w991) { @content; }
+    }
+    @else if $media == min-sm {
+        @media screen and (min-width: $w768) { @content; }
+    }
+    @else if $media == max-sm {
+        @media screen and (max-width: $w991) { @content; }
+    }
+    @else if $media == sm-md {
+        @media screen and (min-width: $w768) and (max-width: $w1024) { @content; }
+    }
+    @else if $media == md {
+        @media screen and (min-width: $w992) and (max-width: $w1024) { @content; }
+    }
+    @else if $media == min-md {
+        @media screen and (min-width: $w992) { @content; }
+    }
+    @else if $media == max-md {
+        @media screen and (max-width: $w1024) { @content; }
+    }
+}

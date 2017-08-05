@@ -1,0 +1,16 @@
+@each $icon in (
+    logo, menu, search, catalog, arrow_right, arrow_right_orange, next, ruble, zoom-basket, check-basket, instagram, facebook, vkontakte, youtube, location, hotline, phone, service, recipes, close_thin, close_thin_black, play, play_fill
+){
+    .ui-basic-#{$icon} {
+        background:url('/assets/images/ui/basic/#{$icon}.svg') no-repeat 0 0 / cover;
+    }
+}
+@mixin ui-basic($icon, $width: false, $height: false) {
+    @if $width {
+        width:#{$width};
+    }
+    @if $height {
+        height:#{$height};
+    }
+    @extend .ui-basic-#{$icon};
+}

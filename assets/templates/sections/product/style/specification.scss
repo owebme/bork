@@ -1,0 +1,306 @@
+section-product {
+    $show: (
+        column__left: (
+            transform: 1.0s $cubic4021
+        ),
+        column__right: (
+            transform: 1.0s $cubic4021 0.2s
+        ),
+        column__center: (
+            transform: 1.0s $cubic4021 0.4s
+        ),
+        container: (
+            transform: 1.2s $cubic4021 1s,
+            opacity:   0.9s $cubic4021 1s
+        ),
+        shema__image: (
+            transform: 0.9s $cubic4021 1.6s,
+            opacity:   0.9s $cubic4021 1.6s
+        ),
+        column__center-before: (
+            transform: 0.9s $cubic4021 1.8s
+        ),
+        close: (
+            transform: 0.7s $cubic28   2s
+        )
+    );
+    $hide: (
+        close: (
+            transform: 0.9s $cubic4001
+        ),
+        column__center-before: (
+            transform: 0.9s $cubic4001
+        ),
+        container: (
+            transform: 0.9s $cubic4021,
+            opacity:   0.6s $cubic4021
+        ),
+        shema__image: (
+            transform: 0.9s $cubic4021,
+            opacity:   0.6s $cubic4021
+        ),
+        column__left: (
+            transform: 1.0s $cubic4021 0.2s
+        ),
+        column__right: (
+            transform: 1.0s $cubic4021 0.4s
+        ),
+        column__center: (
+            transform: 1.0s $cubic4021 0.6s
+        )
+    );
+
+    .specification {
+        @include abs();
+        @extend .pointerEvents-none;
+        @extend .zIndex-10;
+
+        &[data-active="true"] {
+            @extend .pointerEvents-all;
+
+            .specification {
+                &__column__left,
+                &__column__center,
+                &__column__right,
+                &__container,
+                &__shema__image,
+                &__close {
+                    @extend .opacity-100;
+                    @extend .transform-default;
+                }
+                &__column__left {
+                    @include transition($show, column__left);
+                }
+                &__column__center {
+                    @include transition($show, column__center);
+
+                    &:before {
+                        transform:scaleY(1) translateZ(0);
+                        @include transition($show, column__center-before);
+                    }
+                }
+                &__column__right {
+                    @include transition($show, column__right);
+                }
+                &__container {
+                    @include transition($show, container);
+                }
+                &__shema__image {
+                    @include transition($show, shema__image);
+                }
+                &__close {
+                    @include transition($show, close);
+                }
+            }
+        }
+        &__close {
+            @extend .pos-abs;
+            @extend .t0;
+            left:$p_gl_column_left;
+            @extend .w80;
+            @extend .h80;
+            @extend .bg-white;
+            @extend .cursor-pointer;
+            @extend .zIndex-2;
+            @extend .willChange-transform;
+            transform:translate3d(0, -100%, 0);
+            @include transition($hide, close);
+
+            &:after {
+                @extend .content-empty;
+                @extend .pos-centered;
+                @include ui-basic(close_thin_black, 28px, 28px);
+            }
+        }
+        &__column__left,
+        &__column__center,
+        &__column__right {
+            @extend .pos-abs;
+            @extend .t0;
+            @extend .h100p;
+            @extend .bg-black12;
+            @extend .willChange-transform;
+            transform:translate3d(0, -100%, 0);
+        }
+        &__column__left {
+            @extend .l0;
+            width:$p_gl_column_left;
+            @include transition($hide, column__left);
+        }
+        &__column__center {
+            left:$p_gl_column_left;
+            width:$p_gl_column_center;
+            @include transition($hide, column__center);
+
+            &:before {
+                @extend .content-empty;
+                @extend .pos-tl;
+                @extend .w1px;
+                @extend .h100p;
+                @extend .bg-white;
+                @extend .opacity-10;
+                transform-origin:top center;
+                transform:scaleY(0) translateZ(0);
+                @include transition($hide, column__center-before);
+            }
+        }
+        &__column__right {
+            left:$p_gl_column_left + $p_gl_column_center;
+            width:$p_gl_column_right;
+            @include transition($hide, column__right);
+        }
+        &__shema {
+            @extend .flex-centered;
+            @extend .pos-tl;
+            width:$p_gl_column_left;
+            @extend .h100p;
+            max-height:680px;
+
+            &__image {
+                @extend .display-block;
+                @extend .maxW-80p;
+                @extend .w100p;
+                @extend .opacity-0;
+                @extend .willChange-tp;
+                transform:translate3d(0, 60px, 0);
+                @include transition($hide, shema__image);
+            }
+        }
+        &__container {
+            @extend .pos-abs;
+            @extend .t0;
+            @extend .h100p;
+            left:$p_gl_column_left;
+            width:$p_gl_column_center + $p_gl_column_right;
+            @extend .opacity-0;
+            @extend .willChange-tp;
+            transform:translate3d(60px, 0, 0);
+            @include transition($hide, container);
+        }
+        &__content {
+            @extend .pt140;
+            @extend .pl100;
+            @extend .pr-xl;
+            @extend .pb70;
+        }
+        &__item {
+            @extend .flex-row-between-center;
+            width:410px;
+            @extend .maxW-100p;
+            @extend .pt-s;
+            @extend .pb-s;
+            border-bottom:1px solid rgba($white,.2);
+
+            p {
+                @extend .fontFamily-akzidenzExt;
+            }
+            span {
+                @extend .fontWeight-3;
+            }
+        }
+        &__more {
+            @extend .mt-m;
+            @extend .mb-l;
+
+            &__text {
+                @extend .pos-rel;
+                @extend .display-inlineBlock;
+                @extend .pl30;
+                @extend .link-hover;
+
+                &:before,
+                &:after {
+                    @extend .content-empty;
+                    @extend .pos-abs;
+                    @extend .t50p;
+                    @extend .l0;
+                    @extend .bg-white;
+                    @extend .w16;
+                    @extend .h1px;
+                }
+                &:before {
+                    transform:translateY(-50%);
+                }
+                &:after {
+                    transform:rotate(90deg) translateY(-50%);
+                }
+                &[data-open="true"]{
+                    &:after {
+                        @extend .opacity-0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.page section-product {
+    @include res("xs"){
+        .specification {
+            &__container {
+                top:0;
+                height:100%;
+            }
+            &__content {
+                width:85%;
+                padding:140px 0 70px 0;
+            }
+            &__shema {
+                display:none;
+            }
+        }
+    }
+    @include res("max-sm"){
+        .specification {
+            &__close {
+                left:50%;
+                margin-left:-40px;
+            }
+            &__column__center:before {
+                display:none;
+            }
+            &__container {
+                left:0;
+                width:100%;
+            }
+            &__content {
+                margin:0 auto;
+            }
+            &__item {
+                width:100%;
+            }
+        }
+    }
+    @include res("sm"){
+        .specification {
+            &[data-active="true"] {
+                .specification {
+                    &__shema {
+                        background-color:$black12;
+                        transition:background-color 0s $cubic4021 0.9s;
+                    }
+                }
+            }
+            &__container {
+                top:44%;
+                height:56%;
+            }
+            &__content {
+                width:80%;
+                padding:40px 0 70px 0;
+            }
+            &__shema {
+                width:100%;
+                height:44%;
+                max-height:44%;
+                padding-top:150px;
+                transition:background-color 0s $cubic4021 0.6s;
+                z-index:1;
+
+                &__image {
+                    max-height:100%;
+                }
+            }
+        }
+    }
+}

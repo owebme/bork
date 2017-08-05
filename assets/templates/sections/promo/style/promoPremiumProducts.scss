@@ -1,0 +1,257 @@
+promo-premium {
+    .product {
+        @extend .pos-abs;
+
+        &:hover {
+            &:before {
+                transform:scaleY(0) translateZ(0);
+                transition:transform 0.6s $cubic28 0.2s;
+            }
+            .product__pointer {
+                &:after {
+                    transform:translate3d(-50%, -50%, 0) scale(1);
+                    @extend .opacity-85;
+                }
+                &__dot {
+                    @extend .opacity-100;
+                    @extend .bg-orange;
+                }
+            }
+            .product__title {
+                @extend .transform-default;
+                @extend .opacity-100;
+                transition-delay:0.25s;
+            }
+            .product__options {
+                &:before {
+                    transform:scaleY(1) translateZ(0);
+                    transition-delay:0s;
+                }
+                &__overflow {
+                    &:before {
+                        @extend .transform-default;
+                        @extend .opacity-100;
+                        transition-delay:0.2s;
+                    }
+                }
+                &__title {
+                    @extend .transform-default;
+                    @extend .opacity-100;
+
+                    @for $i from 1 through 4 {
+                        &:nth-child(#{$i}) {
+                            transition-delay:#{$i / 20 + 0.2}s;
+                        }
+                    }
+                }
+            }
+        }
+        &:before {
+            @extend .content-empty;
+            @extend .pos-abs;
+            @extend .b100p;
+            @extend .l0;
+            @extend .w1px;
+            @extend .h150;
+            background:linear-gradient(to top, rgba($white,0), rgba($white,.3), rgba($white,.3), rgba($white,0));
+        }
+        &[data-item="x780"]{
+            top:54%;
+            left:7%;
+
+            &:before {
+                @extend .mb-xl;
+                @extend .ml50;
+            }
+        }
+        &[data-item="k780"]{
+            top:58%;
+            left:38%;
+
+            &:before {
+                @extend .mb60;
+                @extend .ml-s;
+            }
+        }
+        &[data-item="m780"]{
+            top:54%;
+            right:34%;
+
+            &:before {
+                @extend .mb90;
+            }
+            .product__title__overflow {
+                @extend .mb--l;
+            }
+        }
+        &[data-item="t781"]{
+            top:56%;
+            right:10%;
+
+            &:before {
+                @extend .mb30;
+                @extend .ml--m;
+            }
+            .product__title__overflow {
+                @extend .mb--l;
+            }
+        }
+        &[data-pos="right"]{
+            .product {
+                &__title {
+                    transform:translate3d(101%, 0, 0);
+
+                    &__overflow {
+                        @extend .text-right;
+                        @extend .r0;
+                        transform:translate3d(80px, -75px, 0);
+                    }
+                }
+                &__options {
+                    @extend .l100p;
+                    @extend .ml100;
+
+                    &:before {
+                        @extend .pos-tl;
+                    }
+                    &__title,
+                    &__overflow:before {
+                        transform:translate3d(-101%, 0, 0);
+                    }
+                    &__title {
+                        @extend .flex-row-left-center;
+                        @extend .pl-m;
+                    }
+                    &__overflow:before {
+                        background-image:linear-gradient(to right, rgba($black1b,.5) 50%, rgba($black1b,0));
+                    }
+                }
+            }
+        }
+        &[data-pos="left"]{
+            .product {
+                &__title {
+                    transform:translate3d(-101%, 0, 0);
+
+                    &__overflow {
+                        @extend .l0;
+                        transform:translate3d(-80px, -75px, 0);
+                    }
+                }
+                &__options {
+                    @extend .r100p;
+                    @extend .mr100;
+                    @extend .text-right;
+
+                    &:before {
+                        @extend .pos-tr;
+                    }
+                    &__title,
+                    &__overflow:before {
+                        transform:translate3d(101%, 0, 0);
+                    }
+                    &__title {
+                        @extend .flex-row-right-center;
+                        @extend .pr-m;
+                    }
+                    &__overflow:before {
+                        background-image:linear-gradient(to left, rgba($black1b,.5) 50%, rgba($black1b,0));
+                    }
+                }
+            }
+        }
+        &__title {
+            @extend .fontSize-17;
+            @extend .lineHeight-22;
+            @extend .c-gray;
+            @extend .fontFamily-bork;
+            @extend .opacity-0;
+            @extend .willChange-tp;
+            transition:transform 0.65s $cubic28, opacity 0.3s $cubic28;
+
+            &__overflow {
+                @extend .pos-abs;
+                @extend .b100p;
+                @extend .overflow-hidden;
+            }
+            span {
+                @extend .c-white;
+            }
+        }
+        &__options {
+            @extend .pos-centered-v;
+            @extend .pointerEvents-none;
+
+            &:before {
+                @extend .content-empty;
+                @extend .w1px;
+                @extend .h130p;
+                margin-top:-15%;
+                background:linear-gradient(to top, rgba($white,0), rgba($white,.4), rgba($white,.4), rgba($white,0));
+                transform:scaleY(0) translateZ(0);
+                transition:transform 0.5s $cubic28;
+                transition-delay:0.2s;
+                @extend .zIndex-1;
+            }
+            &__overflow {
+                @extend .pos-rel;
+                @extend .w200;
+                padding-top:16px;
+                @extend .pb-m;
+                @extend .overflow-hidden;
+
+                &:before {
+                    @extend .content-empty;
+                    @include abs();
+                    @extend .opacity-0;
+                    @extend .willChange-tp;
+                    transition:transform 0.65s $cubic28, opacity 0.3s $cubic28;
+                    @extend .zIndex--1;
+                }
+            }
+            &__title {
+                @include accelerate();
+                @extend .h80;
+                font-size:14.5px;
+                @extend .fontFamily-akzidenzExt;
+                @extend .opacity-0;
+                @extend .willChange-tp;
+                transition:transform 0.65s $cubic28, opacity 0.3s $cubic28;
+            }
+        }
+        &__pointer {
+            @extend .display-block;
+            @extend .pos-abs;
+            @extend .w40;
+            @extend .h40;
+            @extend .borderRadius-circle;
+
+            &__dot {
+                @extend .pos-centered;
+                @extend .w10;
+                @extend .h10;
+                @extend .bg-white;
+                @extend .borderRadius-circle;
+                transition:all 0.6s $cubic4001;
+            }
+            &:before {
+                @extend .content-empty;
+                @include abs();
+                background-color:rgba($white,.2);
+                @extend .borderRadius-circle;
+                animation:pulse 1.2s ease-in-out infinite;
+            }
+            &:after {
+                @extend .content-empty;
+                @extend .pos-abs-half;
+                @extend .w110p;
+                @extend .h110p;
+                transform:translate3d(-50%, -50%, 0) scale(0.25);
+                border:2px solid #fff;
+                @extend .borderRadius-circle;
+                @extend .opacity-85;
+                transition:all 0.6s $cubic4001;
+            }
+        }
+    }
+}

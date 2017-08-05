@@ -1,0 +1,35 @@
+.subscribe {
+    @extend .flex-centered;
+
+    &__label {
+        @extend .fontWeight-3;
+    }
+    &__form {
+        @extend .pos-rel;
+        @extend .ml30;
+        width:220px;
+        @extend .h54;
+        @extend .bg-black2a;
+
+        &__input {
+            @include abs();
+            @extend .bg-none;
+            @extend .border-none;
+            @extend .c-white;
+            padding:17px 40px 17px 23px;
+        }
+        &__button {
+            @extend .border-none;
+            @extend .pos-centered-v;
+            @extend .r-m;
+            @extend .opacity-85;
+            @extend .cursor-pointer;
+            @extend .transition-default;
+            @include ui-basic("arrow_right", 10px, 16px);
+
+            &:hover {
+                @extend .opacity-50;
+            }
+        }
+    }
+}

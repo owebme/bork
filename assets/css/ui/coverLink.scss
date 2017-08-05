@@ -1,0 +1,34 @@
+.ui-cover__link {
+    @extend .display-block;
+    height:68px;
+    font-size:17px;
+    line-height:64px;
+    @extend .fontFamily-akzidenzExt;
+    padding-left:32px;
+    @extend .pr100;
+    @extend .nowrap;
+
+    &:hover {
+        &:before {
+            @extend .bg-orange;
+            transform:translate3d(15px, 0, 0) scale(1.05);
+        }
+        &:after {
+            transform:translate3d(30px, -50%, 0);
+        }
+    }
+    &:before {
+        @extend .content-empty;
+        @include abs();
+        @extend .bg-black12;
+        @extend .zIndex--1;
+        @extend .transition-softer;
+    }
+    &:after {
+        @extend .content-empty;
+        @extend .pos-centered-v;
+        @extend .r30;
+        @include ui-basic("next", 15px, 11px);
+        @extend .transition-softer;
+    }
+}

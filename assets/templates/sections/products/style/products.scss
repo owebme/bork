@@ -1,0 +1,241 @@
+.grid {
+    .product {
+        @extend .pos-rel;
+        @extend .display-block;
+        @extend .cursor-pointer;
+
+        &.-nobg {
+            @extend .cursor-default;
+
+            .product__wrapper {
+                @extend .bg-none;
+            }
+        }
+        &:not(.-nobg):hover {
+            .product {
+                &__image {
+                    @extend .scale-110;
+                }
+                &__wrapper {
+                    @extend .bg-smoke;
+                }
+                &__buttons:before {
+                    @extend .scale-100;
+                }
+            }
+        }
+        &__wrapper {
+            @extend .pos-rel;
+            @extend .flex-centered;
+            @extend .bg-black2a;
+            transition:background-color .5s $cubic28;
+            height:428px;
+
+            &.-line {
+                &:after {
+                    @extend .content-empty;
+                    @extend .pos-abs;
+                    @extend .r60;
+                    bottom:57px;
+                    width:570px;
+                    @extend .h1px;
+                    @extend .bg-orange;
+                    @extend .zIndex-2;
+                }
+            }
+        }
+        &__image {
+            @include accelerate();
+            @extend .maxW-60p;
+            @extend .maxH-75p;
+            @extend .willChange-tp;
+            transition:transform .4s $cubic28, opacity .3s ease;
+        }
+        &__buttons {
+            @extend .flex-centered;
+            @extend .pos-abs;
+            @extend .t-m;
+            @extend .r-m;
+            @extend .w35;
+            @extend .h35;
+            @extend .cursor-pointer;
+            will-change:width;
+            transition:width 0.2s ease-out;
+
+            html.m-no-touch &:hover {
+                @extend .w60;
+            }
+            &:before {
+                @extend .content-empty;
+                @include abs();
+                border-radius:17.5px;
+                @extend .bg-orange;
+                @extend .scale-0;
+                transition:transform .4s $cubic28;
+            }
+            &:after {
+                @extend .pos-rel;
+                bottom:1px;
+                @extend .content-empty;
+                @extend .display-block;
+                @extend .mlr-xs;
+            }
+            &[data-item="zoom-basket"]:after {
+                @include ui-basic("zoom-basket", 39px, 19px);
+            }
+            &[data-item="check-basket"]:after {
+                @include ui-basic("check-basket", 40px, 19px);
+            }
+        }
+        &__text {
+            padding-top:18px;
+
+            &__left {
+                @extend .fontSize-18;
+                @extend .letterSpacing-xs;
+                @extend .fontFamily-akzidenzExt;
+                @extend .text-left;
+                @extend .pl60;
+                @extend .pb-l;
+                @extend .pr-m;
+            }
+        }
+        &__title {
+            @extend .letterSpacing-s;
+            @extend .mb1;
+        }
+        &__price {
+            @extend .display-inlineBlock;
+            @extend .c-grayDark;
+            @extend .pt6;
+            @extend .fontWeight-3;
+            @extend .fontSize-15;
+            @extend .letterSpacing-s;
+
+            &__sale {
+                @extend .display-inlineBlock;
+                @extend .c-orangeLight;
+                @extend .ml4;
+                @extend .fontWeight-3;
+                font-size:14.5px;
+                line-height:16px;
+                @extend .letterSpacing-xs;
+                @extend .borderRadius-s;
+                padding:4px 7px 5px;
+                box-shadow:0 0 0 1px rgba($orangeLight,.4);
+            }
+        }
+        &__options {
+            @include abs(fit);
+            @extend .flex-column-center-stretch;
+
+            &__item {
+                @extend .pos-rel;
+                @extend .w100p;
+                @extend .h33p;
+                @extend .flex-centered;
+
+                &:hover {
+                    .product__options__icon {
+                        border-left-color:$orange;
+                        border-right-color:$black12;
+                        transform:translateX(-110%) translateZ(0);
+                        transition:transform 0.7s ease, border-color 0.3s $cubic28 0.3s;
+
+                        path {
+                            @extend .fill-orangeLight;
+                        }
+                    }
+                    .product__options__text {
+                        @extend .opacity-100;
+                        transition:opacity 0.6s $cubic28 0.3s;
+                    }
+                }
+            }
+            &__icon {
+                @extend .w150;
+                @extend .h150;
+                @extend .bg-black12;
+                @extend .trX-s;
+                @extend .borderRadius-circle;
+                @extend .willChange-transform;
+                border-left:1px solid $black12;
+                transition:transform 0.7s ease, border-color 0.3s ease;
+
+                svg {
+                    @extend .pos-centered;
+                    @extend .display-block;
+                    width:92px;
+                    height:92px;
+                    @extend .ml--s;
+                }
+                path {
+                    @extend .fill-white;
+                    transition:fill 0.7s ease;
+                }
+            }
+            &__text {
+                @extend .pos-centered;
+                @extend .opacity-0;
+                @extend .willChange-opacity;
+                @extend .pointerEvents-none;
+                @extend .fontWeight-3;
+                @extend .fontSize-17;
+                @extend .w60p;
+                transition:opacity 0.3s $cubic28;
+            }
+        }
+    }
+}
+
+body > .page {
+    @media (min-width: $w1600) {
+        .grid {
+            .product {
+                &__wrapper {
+                    height:448px;
+                }
+            }
+        }
+    }
+    @include res("xs") {
+        .grid {
+            .product {
+                &__wrapper {
+                    height:calc(100vw - 130px);
+                    transition:background-color .3s $cubic4021;
+
+                    &.-line {
+                        &:after {
+                            right:40px;
+                            bottom:40px;
+                        }
+                    }
+                }
+                &__image {
+                    max-width:67%;
+                    max-height:85%;
+                }
+                &__buttons {
+                    top:10px;
+                    right:10px;
+                }
+                &__text {
+                    height:71px;
+                    padding-top:11px;
+                    white-space:nowrap;
+
+                    &__left {
+                        padding-left:18px;
+                        font-size:18px;
+                        font-family:$akzidenz;
+                    }
+                }
+                &__title {
+                    font-size:15.5px;
+                    letter-spacing:0px;
+                }
+            }
+        }
+    }
+}

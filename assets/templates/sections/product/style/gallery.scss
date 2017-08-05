@@ -1,0 +1,90 @@
+section-product {
+    .gallery {
+        &__items {
+            @extend .display-block;
+            @include accelerate();
+            @include abs();
+            @extend .pointerEvents-none;
+            @extend .willChange-transform;
+            transform:translate3d(0, 0, 0) scale3d(1, 1, 1);
+            @extend .zIndex-0;
+        }
+        &__item {
+            @include abs();
+
+            &.-prevSlide {
+                @extend .zIndex-1;
+            }
+            &.-activeSlide {
+                @extend .zIndex-2;
+
+                .gallery__item {
+                    &__cover {
+                        @extend .opacity-0;
+                    }
+                    &__left {
+                        clip:rect(0, $p_gl_column_left, 100vh, 0);
+                        @include clip(1s);
+                    }
+                    &__center {
+                        clip:rect(0, $p_gl_column_left + $p_gl_column_center, 100vh, $p_gl_column_left);
+                        @include clip(1s, .45s);
+                    }
+                    &__right {
+                        clip:rect(0, 100vw, 100vh, $p_gl_column_left + $p_gl_column_center);
+                        @include clip(1s, .6s);
+                    }
+                }
+            }
+            &__cover {
+                @include abs();
+                @extend .bg-cover;
+            }
+            .bg {
+                @include abs();
+                @extend .bg-cover;
+            }
+            &__left {
+                clip:rect(0, 0, 100vh, 0);
+            }
+            &__center {
+                clip:rect(0, $p_gl_column_left, 100vh, $p_gl_column_left);
+            }
+            &__right {
+                clip:rect(0, $p_gl_column_left, 100vh, $p_gl_column_left + $p_gl_column_center);
+            }
+        }
+    }
+}
+
+.page section-product .gallery {
+    @include res("max-sm"){
+        &__item {
+            &.-activeSlide {
+                .gallery__item {
+                    &__left {
+                        clip:rect(0, 100vw, 100vh, 0);
+                    }
+                }
+            }
+            &__center,
+            &__right {
+                display:none;
+            }
+        }
+    }
+    @include res("md"){
+        &__item {
+            &.-activeSlide {
+                .gallery__item {
+                    &__center {
+                        clip:rect(0, 100vw, 100vh, $p_gl_column_left);
+                    }
+                }
+            }
+            &__right {
+                display:none;
+            }
+        }
+    }
+}

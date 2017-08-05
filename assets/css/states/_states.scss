@@ -1,0 +1,122 @@
+.disable__hover * {
+	pointer-events:none !important;
+}
+.nativeScroll {
+	-webkit-overflow-scrolling:touch;
+}
+.backVisible-hidden {
+	-webkit-backface-visibility:hidden;
+}
+.boxSizing-contentBox {
+	box-sizing:content-box;
+}
+.boxSizing-borderBox {
+	box-sizing:border-box;
+}
+.accelerate {
+    transform-style:flat;
+    @extend .backVisible-hidden;
+}
+.content-empty {
+	content:"";
+}
+.centered {
+	float:none;
+    margin-left:auto;
+    margin-right:auto;
+}
+.centered-h {
+	float:none;
+	margin-left:50%;
+	transform:translate3d(-50%, 0, 0);
+}
+.centered-v {
+	float:none;
+	margin-top:50%;
+	transform:translate3d(0, -50%, 0);
+}
+.cursor-pointer {
+    cursor:pointer;
+}
+.cursor-default {
+    cursor:default;
+}
+.cursor-text {
+    cursor:text;
+}
+.cursor-move {
+    cursor:move;
+}
+.userSelect-none {
+    user-select:none;
+}
+.userSelect-text {
+    user-select:text;
+}
+.userDrag-none {
+	user-drag:none;
+}
+.userDrag-auto {
+	user-drag:auto;
+}
+.outline-none {
+    outline:none;
+	outline-style:none;
+}
+.pointerEvents-none {
+	pointer-events:none;
+}
+.pointerEvents-all {
+	pointer-events:all;
+}
+.visibility-hidden {
+	visibility:hidden;
+}
+.visibility-visible {
+	visibility:visible;
+}
+.willChange-transform {
+	will-change:transform;
+}
+.willChange-opacity {
+	will-change:opacity;
+}
+.willChange-clip {
+	will-change:clip;
+}
+.willChange-tp {
+	will-change:transform, opacity;
+}
+.perspective-500 {
+	perspective:500px;
+}
+.perspective-1000 {
+	perspective:1000px;
+}
+.appearance-none {
+	appearance:none;
+}
+.float-left {
+	float:left;
+}
+.float-right {
+	float:right;
+}
+.float-none {
+	float:none;
+}
+.listStyle-none {
+	list-style:none;
+}
+.svg-filter {
+    @extend .pos-abs;
+	@extend .visibility-hidden;
+	@extend .w1px;
+	@extend .h1px;
+}
+.clear:before,
+.clear:after {
+	clear:both;
+	display:table;
+	content:" ";
+}

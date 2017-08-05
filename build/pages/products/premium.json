@@ -1,0 +1,18 @@
+{
+    "output": "pages/products/premium",
+    "css": "pages/premium.scss",
+    "riot": [
+        "assets/templates/pages/premium/*.html",
+        "assets/templates/pages/premium/**/*.html",
+        "assets/templates/sections/product/*.html",
+        "assets/templates/modules/player/player.html"
+    ],
+    "js": [
+        "assets/js/libs/iscroll.js",
+        "assets/js/plugins/scroll/scroll.Content.js",
+        "assets/js/components/pages/premium/HeroScrollAnimation.js",
+        "assets/js/components/pages/premium/HeroBackgroundVideo.js",
+        "assets/js/components/pages/premium/HeroTextMaskedVideo.js",
+        "assets/js/store/premium/*.js"
+    ]
+}

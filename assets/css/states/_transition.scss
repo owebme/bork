@@ -1,0 +1,62 @@
+@each $title, $time in (xxs: .1s, xs: .2s, s: .3s, m: .5s, l: .7s, xl: 1s, xxl: 1.4s, xxxl: 2s){
+    .transition-#{$title} {
+        @include accelerate();
+        transition:all $time linear;
+    }
+}
+@each $title, $time in (none: 0s, xxs: .1s, xs: .2s, s: .4s, m: .6s, l: .8s, xl: 1s){
+    .transition-delay-#{$title} {
+        transition-delay:$time;
+    }
+}
+@each $title, $fn in (bounce: $bounce, cubic215: $cubic215, cubic645: $cubic645, cubic40: $cubic40, cubic32: $cubic32, cubic28: $cubic28, cubic25b: $cubic2501, cubic075: $cubic075, cubic345: $cubic345, cubic4001: $cubic4001){
+    .transition-fn-#{$title} {
+        transition-timing-function:$fn;
+    }
+}
+.transition-none,
+.transition-none-a:after,
+.transition-none-b:before {
+    transition:none !important;
+    transition-delay:0s !important;
+}
+.transition-none-ab,
+.transition-none-ba {
+	&:after, &:before {
+		transition:none !important;
+        transition-delay:0s !important;
+	}
+}
+.transitionAll-none,
+.transitionAll-none * {
+    transition:none !important;
+    transition-delay:0s !important;
+}
+.transition-default {
+	transition-timing-function:$cubic215;
+    transition-duration:.3s;
+    transition-property:all;
+}
+.transition-soft {
+	transition-timing-function:$cubic28;
+    transition-duration:.4s;
+    transition-property:all;
+}
+.transition-softer {
+	transition-timing-function:$cubic32;
+    transition-duration:.4s;
+    transition-property:all;
+}
+.transition-ease {
+	transition-timing-function:$cubic2501;
+    transition-duration:.5s;
+    transition-property:all;
+}
+.transition-fast {
+	transition-timing-function:$cubic4001;
+    transition-duration:.3s;
+    transition-property:all;
+}
+.transition-clip {
+	transition:clip 0.9s $cubic4021;
+}

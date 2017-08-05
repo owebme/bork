@@ -1,0 +1,139 @@
+section-product {
+    .product__features {
+        @include clip(.9s, .2s);
+        @extend .pos-abs;
+        @extend .b0;
+        @extend .zIndex-2;
+        left:-170px;
+        width:$p_fs_block_width + $p_fs_block_clipRight;
+        height:$p_fs_block_height + $p_fs_block_image + $p_fs_block_text;
+        clip:rect($p_fs_block_image + $p_fs_block_text, $p_fs_block_width, auto, auto);
+
+        &.-extend {
+            @include clip();
+            clip:rect(0, $p_fs_block_width + $p_fs_block_clipRight, auto, auto);
+
+            &:after {
+                @extend .transform-default;
+            }
+            .product__features__text {
+                @extend .opacity-0;
+                transition:opacity 0.6s $cubic4001;
+            }
+            .product__features__item__title {
+                transition:opacity 0.9s $cubic4001;
+            }
+        }
+        &:after {
+            @extend .content-empty;
+            @extend .pos-bl;
+            @extend .w100p;
+            height:$p_fs_block_title;
+            @extend .bg-orange;
+            @extend .willChange-transform;
+            transform:translate3d(0, 100%, 0);
+            transition:transform 0.9s $cubic4001;
+        }
+        &:before {
+            @extend .content-empty;
+            @extend .pos-bl;
+            @extend .w100p;
+            height:calc(100% - #{$p_fs_block_text});
+            @extend .bg-black;
+        }
+        &__text {
+            @extend .pos-rel;
+            @extend .fontFamily-bork;
+            @extend .fontSize-17;
+            @extend .letterSpacing-s;
+            @extend .pl-l;
+            @extend .pb-l;
+            @extend .pr-xl;
+            @extend .willChange-opacity;
+            padding-top:$p_fs_block_image + $p_fs_block_text + 40px;
+            transition:opacity 0.9s $cubic4001;
+        }
+        &__items {
+            @include abs();
+            @extend .pointerEvents-none;
+        }
+        &__item {
+            @include abs();
+
+            &.-show {
+                .product__features__item {
+                    &__title {
+                        @extend .opacity-100;
+                    }
+                    &__text {
+                        clip:rect(0, $p_fs_block_width + $p_fs_block_clipRight, auto, auto);
+                    }
+                    &__image__overflow {
+                        clip:rect(0, $p_fs_block_width + $p_fs_block_clipRight, auto, 0);
+                    }
+                }
+            }
+            &__image {
+                @extend .pos-centered-v;
+                @extend .l0;
+                @extend .w100p;
+                @extend .h150p;
+                @extend .bg-cover;
+
+                &__overflow {
+                    @extend .pos-bl;
+                    @extend .w100p;
+                    height:calc(100% - #{$p_fs_block_text});
+                    @extend .overflow-hidden;
+                    @include clip();
+                    clip:rect(0, $p_fs_block_width + $p_fs_block_clipRight, auto, $p_fs_block_width + $p_fs_block_clipRight);
+                }
+            }
+            &__title {
+                @extend .flex-row-left-center;
+                @extend .pos-bl;
+                @extend .w100p;
+                height:$p_fs_block_title;
+                @extend .pl25;
+                @extend .pr25;
+                @extend .nowrap;
+                @extend .fontFamily-akzidenzExt;
+                @extend .willChange-opacity;
+                @extend .opacity-0;
+                transition:opacity 0.6s $cubic4001;
+                @extend .zIndex-1;
+            }
+            &__text {
+                @extend .pos-tl;
+                @extend .w100p;
+                @extend .pt25;
+                @extend .pb25;
+                @extend .pl35;
+                @extend .pr-xl;
+                @extend .bg-black;
+                @extend .fontFamily-akzidenzExt;
+                @extend .fontSize-15;
+                @extend .lineHeight-22;
+                min-height:$p_fs_block_text;
+                @include clip();
+                clip:rect(0, 0, auto, auto);
+                @extend .zIndex-1;
+            }
+        }
+    }
+}
+.page section-product {
+    @include res("xs"){
+        .product__features {
+            display:none;
+        }
+    }
+    @include res("sm"){
+        .product__features {
+            &__text {
+                font-size:16px;
+                padding-right:140px;
+            }
+        }
+    }
+}

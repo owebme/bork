@@ -1,0 +1,30 @@
+.footer {
+    @extend .display-block;
+    @extend .mtb-xl;
+
+    .service__cards {
+        @extend .mt100;
+    }
+    .subscribe {
+        @extend .mt50;
+    }
+    &__content {
+        @extend .mt110;
+    }
+    .social__items {
+        @extend .mt-xl;
+    }
+    .copyright {
+        @extend .mt60;
+    }
+}
+@media (min-width: $grid_size_xlg) {
+    .footer {
+        .service__cards__item__icon {
+            transform:scale(1.45) translateY(-6px);
+        }
+        .service__cards__item__title {
+            font-size:16px;
+        }
+    }
+}

@@ -1,0 +1,123 @@
+.grid {
+    &__item {
+        @extend .pos-rel;
+        height:504px;
+        @extend .mb30;
+    }
+    &__divider {
+        @extend .pos-rel;
+        @extend .container;
+        @extend .mt30;
+        @extend .mb100;
+
+        &:after {
+            @extend .content-empty;
+            @extend .pos-tl;
+            @extend .w100p;
+            @extend .h1px;
+            @extend .bg-white;
+            opacity:0.17;
+        }
+    }
+    .block {
+        @extend .overflow-hidden;
+        @extend .cursor-pointer;
+        box-shadow:inset 0 -70px 0 0 $orange;
+        background-repeat: no-repeat;
+        background-position: 0 0;
+        will-change:opacity, background-position;
+        transition:opacity .5s $cubic28, background-position .3s $cubic28;
+
+        &:hover {
+            background-position: 0 -70px;
+
+            &:after {
+                @extend .opacity-100;
+                transform:translateY(-70px) translateZ(0);
+            }
+            .block__image {
+                transform:translateY(-70px) translateZ(0);
+            }
+        }
+        &:after {
+            @extend .opacity-0;
+            @extend .content-empty;
+            @include abs();
+            @extend .willChange-tp;
+            background-color:rgba($black,.2);
+            transition:opacity .3s $cubic28, transform .4s $cubic28;
+        }
+        &__image {
+            @include accelerate();
+            @include abs();
+            @extend .bg-cover;
+            @extend .willChange-transform;
+            transition:transform .4s $cubic28;
+        }
+        &__title {
+            @extend .pos-bl;
+            @extend .w100p;
+            @extend .h70;
+            @extend .fontFamily-akzidenzExt;
+            @extend .letterSpacing-xs;
+            padding:23px 60px 28px 28px;
+
+            &:after {
+                @extend .content-empty;
+                @extend .pos-centered-v;
+                @extend .r30;
+                @extend .mt--2;
+                @include ui-basic("next", 15px, 11px);
+            }
+        }
+    }
+}
+
+@media (min-width: $w1600) {
+    .grid {
+        &__item {
+            height:547px;
+        }
+    }
+}
+@include res("min-sm") {
+    .grid {
+        padding:0;
+    }
+}
+@include res("xs") {
+    .grid {
+        padding-left:7px;
+        padding-right:7px;
+
+        &__item {
+            height:auto;
+            margin-bottom:17px;
+
+            &.block {
+                height:calc(100vw - 109px);
+                margin-bottom:15px;
+
+                .block__title {
+                    height:56px;
+                    padding:15px 60px 22px 22px;
+
+                    &:after {
+                        right:20px;
+                    }
+                }
+                &:hover {
+                    box-shadow: inset 0 -56px 0 0 $orange;
+                    background-position: 0 -56px;
+
+                    &:after {
+                        transform:translateY(-56px) translateZ(0);
+                    }
+                    .block__image {
+                        transform:translateY(-56px) translateZ(0);
+                    }
+                }
+            }
+        }
+    }
+}

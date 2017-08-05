@@ -1,0 +1,41 @@
+.iscroll {
+    html.d-mobile & {
+        .iScrollVerticalScrollbar {
+            @extend .willChange-opacity;
+            @extend .opacity-0;
+            transition:opacity .3s;
+        }
+        &.i-scrolling {
+            .iScrollVerticalScrollbar {
+                @extend .opacity-100;
+            }
+        }
+    }
+    .iScrollVerticalScrollbar {
+        @extend .pos-tr;
+        @extend .h100p;
+        width:4px;
+        transition:width .175s;
+        @extend .overflow-visible;
+
+        &:hover {
+            width:8px;
+        }
+    }
+    .iScrollIndicator {
+        @extend .pos-tl;
+        @extend .w100p;
+        @extend .willChange-transform;
+        @extend .bg-orange;
+        @extend .zIndex-1;
+
+        &:before {
+            @extend .content-empty;
+            @extend .pos-abs;
+            @extend .t--m;
+            @extend .b--m;
+            @extend .r0;
+            @extend .w20;
+        }
+    }
+}

@@ -1,0 +1,84 @@
+@each $title, $size in (xs: 2px, s: 3px, m: 4px, l: 6px, xl: 10px, xxl: 20px, xxxl: 25px, xxxxl: 50px, xxxxxl: 100px){
+    .borderRadius-#{$title} {
+        border-radius:$size;
+    }
+    .borderRadiusTop-#{$title} {
+        border-top-left-radius:$size;
+        border-top-right-radius:$size;
+    }
+    .borderRadiusBottom-#{$title} {
+        border-bottom-left-radius:$size;
+        border-bottom-right-radius:$size;
+    }
+    .borderRadiusTopLeft-#{$title} {
+        border-top-left-radius:$size;
+    }
+    .borderRadiusTopRight-#{$title} {
+        border-top-right-radius:$size;
+    }
+    .borderRadiusBottomLeft-#{$title} {
+        border-bottom-left-radius:$size;
+    }
+    .borderRadiusBottomRight-#{$title} {
+        border-bottom-right-radius:$size;
+    }
+    .borderRadiusLeft-#{$title} {
+        border-top-left-radius:$size;
+        border-bottom-left-radius:$size;
+    }
+    .borderRadiusRight-#{$title} {
+        border-top-right-radius:$size;
+        border-bottom-right-radius:$size;
+    }
+}
+@for $i from 1 through 5 {
+    .borderWidth-#{$i} {
+        border-width:#{$i}px;
+    }
+    .borderLeftWidth-#{$i} {
+        border-left-width:#{$i}px;
+    }
+    .borderRightWidth-#{$i} {
+        border-right-width:#{$i}px;
+    }
+    .borderTopWidth-#{$i} {
+        border-top-width:#{$i}px;
+    }
+    .borderBottomWidth-#{$i} {
+        border-bottom-width:#{$i}px;
+    }
+}
+.borderRadius-circle {
+    border-radius:50%;
+}
+.borderRadiusTop-none {
+    border-top-left-radius:0;
+    border-top-right-radius:0;
+}
+.borderRadiusBottom-none {
+    border-bottom-left-radius:0;
+    border-bottom-right-radius:0;
+}
+.borderRadiusLeft-none {
+    border-top-left-radius:0;
+    border-bottom-left-radius:0;
+}
+.borderRadiusRight-none {
+    border-top-right-radius:0;
+    border-bottom-right-radius:0;
+}
+.borderRadius-none {
+    border-radius:0;
+}
+.borderStyle-solid {
+    border-style:solid;
+}
+.borderStyle-dotted {
+    border-style:dotted;
+}
+.borderStyle-dashed {
+    border-style:dashed;
+}
+.border-none {
+    border:none;
+}

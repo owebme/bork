@@ -1,0 +1,155 @@
+section-product {
+    .nav {
+        &__status {
+            @extend .pos-centered-v;
+            @extend .l0;
+            @extend .mt--100;
+
+            &__progress {
+                @extend .pos-centered-v;
+                @extend .r100p;
+                @extend .mr70;
+                width:295px;
+                @extend .h1px;
+
+                &:before {
+                    @extend .content-empty;
+                    @include abs();
+                    @extend .bg-orange;
+                    transform-origin:0% 50%;
+                }
+                &.-loading {
+                    animation:nav-progress 1.8s $cubic4001;
+                }
+                @keyframes nav-progress {
+                    35% {
+                        transform:scaleX(0) translateZ(0);
+                        transform-origin:0% 50%;
+                    }
+                    0%, 100% {
+                        transform:scaleX(1) translateZ(0);
+                        transform-origin:0% 50%;
+                    }
+                }
+            }
+            &__num {
+                @extend .pos-rel;
+                margin-left:-33px;
+                @extend .c-orange;
+                @extend .fontFamily-bork;
+                @extend .fontWeight-bold;
+                font-size:60px;
+                line-height:60px;
+                text-shadow:0 1px 1px rgba($black1b,.3);
+
+                &__items {
+                    @extend .flex-column-centered;
+                    @extend .pos-tl;
+                    @extend .w100p;
+                    @extend .willChange-transform;
+                    transition:transform 1.1s $cubic4001 0.6s;
+
+                    &__overflow {
+                        @extend .pos-rel;
+                        top:7px;
+                        @extend .display-inlineBlock;
+                        @extend .c-white;
+                        @extend .w60;
+                        @extend .h60;
+                        @extend .overflow-hidden;
+                    }
+                    @for $i from 0 through 9 {
+                        &[data-slide="#{$i + 1}"]{
+                            transform:translate3d(0, -#{$i * 60}px, 0);
+                        }
+                    }
+                }
+                &__item {
+                    @extend .w60;
+                    @extend .h60;
+                }
+            }
+            &__label {
+                @extend .pos-abs;
+                @extend .t--xs;
+                @extend .r--s;
+                @extend .fontWeight-normal;
+                font-size:18px;
+                line-height:18px;
+            }
+        }
+        &__arrows {
+            @extend .pos-centered;
+            @extend .mt--60;
+            @extend .zIndex-2;
+
+            &__items {
+                @extend .pos-rel;
+
+                &:before {
+                    @extend .content-empty;
+                    @extend .pos-tl;
+                    @extend .w1px;
+                    @extend .h190;
+                    @extend .bg-white;
+                    @extend .opacity-50;
+                }
+            }
+            &__item {
+                @extend .pos-abs;
+                @extend .t50;
+                @extend .opacity-75;
+                @extend .btn-active;
+                @extend .cursor-pointer;
+
+                &:hover {
+                    @extend .opacity-100;
+                }
+                &:after {
+                    @extend .content-empty;
+                    @extend .display-block;
+                    @include ui-basic("arrow_right", 16px, 25px);
+                }
+                &.-left {
+                    left:-38px;
+
+                    &:after {
+                        transform:scaleX(-1);
+                    }
+                }
+                &.-right {
+                    right:-39px;
+                }
+            }
+        }
+    }
+}
+.page section-product {
+    @include res("xs"){
+        .nav__status__progress {
+            width:calc(#{$p_gl_column_left} - 50px);
+            margin-right:50px;
+        }
+        .nav__arrows {
+            left:$p_gl_column_left;
+            margin-top:-80px;
+            transform:translate3d(0, -50%, 0);
+
+            &__items {
+                &:before {
+                    display:none;
+                }
+            }
+        }
+    }
+    @include res("sm"){
+        .nav__status__progress {
+            width:calc(#{$p_gl_column_left} - 70px);
+        }
+    }
+    @include res("sm-md"){
+        .nav__arrows {
+            margin-top:-38px;
+        }
+    }
+}

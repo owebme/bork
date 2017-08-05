@@ -1,0 +1,37 @@
+.social {
+    &__items {
+        @extend .flex-centered;
+    }
+    &__item {
+        @extend .flex-centered;
+        @extend .w48;
+        @extend .h24;
+
+        &:hover {
+            &:after {
+                @extend .opacity-70;
+            }
+        }
+        &:after {
+            @extend .content-empty;
+            @extend .display-block;
+            @extend .transition-default;
+        }
+        &[data-item="fb"]:after {
+            @extend .bg-cover-center;
+            @include ui-basic("facebook", 24px, 24px);
+        }
+        &[data-item="in"]:after {
+            @extend .bg-cover-center;
+            @include ui-basic("instagram", 24px, 24px);
+        }
+        &[data-item="yb"]:after {
+            @extend .bg-cover-center;
+            @include ui-basic("youtube", 30px, 30px);
+        }
+        &[data-item="vk"]:after {
+            @extend .bg-cover-center;
+            @include ui-basic("vkontakte", 31px, 17px);
+        }
+    }
+}

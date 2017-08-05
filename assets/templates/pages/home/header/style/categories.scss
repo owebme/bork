@@ -1,0 +1,156 @@
+.home {
+    .header {
+        &__categories {
+            @extend .display-block;
+            @extend .pos-abs;
+            @extend .l0;
+            bottom:8vh;
+            @extend .w100p;
+            height:210px;
+            border-top:1px solid rgba($white,.1);
+            border-bottom:1px solid rgba($white,.1);
+            @extend .zIndex-2;
+
+            &:hover {
+                .header__category__item {
+                    &__icon {
+                        @extend .opacity-50;
+                    }
+                    &:hover {
+                        @extend .opacity-100;
+                    }
+                }
+            }
+            &__container {
+                @extend .pos-rel;
+                @extend .h100p;
+
+                &:before,
+                &:after {
+                    @extend .hidden-xs;
+                    @extend .content-empty;
+                    @extend .pos-centered-v;
+                    @extend .h100p;
+                    @extend .w1px;
+                    background-image:linear-gradient(to top, rgba($white,0) 8%, rgba($white,1), rgba($white,1), rgba($white,0));
+                    @extend .opacity-10;
+                }
+                &:before {
+                    @extend .l0;
+                }
+                &:after {
+                    @extend .r0;
+                }
+            }
+            &__row {
+                @extend .flex-centered;
+                @extend .centered;
+                max-width:772px;
+            }
+            div[class^="col-"]{
+                &:after {
+                    @extend .content-empty;
+                    @extend .pos-centered-v;
+                    @extend .l75p;
+                    @extend .w50p;
+                    @extend .h1px;
+                    @extend .bg-white;
+                    @extend .opacity-15;
+                }
+                &:last-child:after {
+                    @extend .display-none;
+                }
+            }
+        }
+        &__category {
+            &__item {
+                @extend .flex-column-centered;
+                @extend .h180;
+                @extend .cursor-pointer;
+
+                &:hover {
+                    .header__category__item__icon {
+                        @extend .opacity-100;
+                    }
+                    path {
+                        @extend .fill-white;
+                    }
+                }
+                &__icon {
+                    @extend .pos-rel;
+                    height:78px;
+                    @extend .w100p;
+                    @extend .transition-softer;
+
+                    svg {
+                        @extend .pos-centered;
+                        @extend .h68;
+
+                        &[data-icon="climate"]{
+                            @extend .mt--xs;
+                        }
+                    }
+                    path {
+                        @extend .fill-orangeLight;
+                        @extend .transition-softer;
+                    }
+                }
+                &__title {
+                    @extend .fontWeight-3;
+                    @extend .letterSpacing-s;
+                }
+            }
+        }
+    }
+}
+
+body > .home {
+    @include res("xs") {
+        .header {
+            &__categories {
+                bottom:0;
+                height:$categories_panel_height_xs;
+                border:none;
+                padding-bottom:10px;
+                background-color:$orange;
+
+                &__container,
+                &__row {
+                    height:100%;
+                }
+                div[class^="col-"]{
+                    &:after {
+                        background-color:$black;
+                        left:85%;
+                        opacity:0.3;
+                        width:30%;
+                    }
+                }
+            }
+            &__category__item {
+                height:90px;
+
+                &__icon {
+                    height:90px;
+
+                    svg {
+                        height:54px;
+
+                        &[data-icon="home"]{
+                            height:50px;
+                            margin-top:-2px;
+                        }
+                    }
+                    path {
+                        fill:$black;
+                    }
+                }
+                &__title {
+                    color:$white;
+                    font-size:14px;
+                    letter-spacing:1px;
+                }
+            }
+        }
+    }
+}

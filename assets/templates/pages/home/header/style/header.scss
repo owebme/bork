@@ -1,0 +1,44 @@
+.home {
+    .header {
+        @extend .display-block;
+        @extend .pos-rel;
+        @extend .overflow-hidden;
+        @extend .zIndex-0;
+        @extend .willChange-opacity;
+        margin-bottom:39px;
+
+        &__lines {
+            @extend .pos-centered-h;
+            top:$navbar_height;
+            width:$grid_size_xmd;
+            @extend .pointerEvents-none;
+            @extend .zIndex-3;
+
+            &:before,
+            &:after {
+                @extend .content-empty;
+                @extend .pos-abs;
+                @extend .t0;
+                @extend .w1px;
+                background-image:linear-gradient(to top, rgba($white,0) 9%, rgba($white,1), rgba($white,1) 100%);
+                opacity:0.14;
+            }
+            &:before {
+                @extend .l0;
+                height:237px;
+            }
+            &:after {
+                @extend .r0;
+                height:187px;
+            }
+        }
+    }
+}
+
+body > .home {
+    @include res("xs") {
+        .header {
+            margin-bottom:15px;
+        }
+    }
+}

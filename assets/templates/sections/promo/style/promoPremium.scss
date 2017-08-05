@@ -1,0 +1,180 @@
+promo-premium {
+    $path: "#{$pathImages}promo/premium/";
+
+    @extend .display-block;
+    @extend .pos-rel;
+
+    .top {
+        @extend .pos-rel;
+
+        &__line {
+            top:-140px;
+            width:800px;
+            @extend .ml-xl;
+            @extend .l50p;
+        }
+        &__line,
+        &:before,
+        &:after {
+            @extend .content-empty;
+            @extend .pos-abs;
+            @extend .h1px;
+            @extend .bg-white;
+            @extend .opacity-25;
+        }
+        &:before,
+        &:after {
+            width:600px;
+        }
+        &:before {
+            top:124px;
+            @extend .l50p;
+            margin-left:-800px;
+        }
+        &:after {
+            bottom:103px;
+            @extend .r50p;
+            margin-right:-800px;
+        }
+        &__title {
+            @extend .pos-centered;
+            width:1174px;
+            height:138px;
+            @extend .overflow-hidden;
+
+            &__parallax {
+                @extend .pos-abs;
+                @extend .t50p;
+                @extend .r0;
+                width:1600px;
+                height:1067px;
+                margin:-800px 0 0 0;
+                @extend .bg-cover;
+                background-image:url(#{$path}image_large.jpg);
+                filter:brightness(1.7) contrast(1.3);
+
+                &:after {
+                    @extend .content-empty;
+                    @include abs();
+                    background-color:#8492A6;
+                    @extend .opacity-15;
+                }
+            }
+            &:after {
+                @extend .content-empty;
+                @include abs();
+                @extend .bg-cover;
+                background-image:url(#{$path}title_large_2x.png);
+            }
+        }
+        &__text {
+            @extend .fontSize-20;
+            @extend .lineHeight-24;
+            @extend .fontFamily-bork;
+            @extend .letterSpacing-s;
+
+            &[data-pos="bottom-left"]{
+                @extend .pos-abs;
+                @extend .t50p;
+                @extend .r100p;
+                width:350px;
+                margin:105px 88px 0 0;
+            }
+        }
+        .grid__item {
+            @extend .mb-s;
+        }
+    }
+    .-parallax,
+    .-parallax-smooth {
+        @include accelerate();
+        @extend .willChange-transform;
+    }
+    .picture {
+        @include abs();
+        @extend .overflow-hidden;
+        @extend .zIndex-1;
+
+        &:before {
+            @extend .content-empty;
+            @include abs();
+            @extend .opacity-40;
+            @extend .bg-cover;
+            background-image:url(#{$path}picture_top.jpg);
+        }
+        &__text {
+            @include abs();
+            @extend .overflow-hidden;
+            @extend .zIndex-2;
+
+            &:after {
+                @extend .content-empty;
+                @extend .pos-abs;
+                @extend .t50p;
+                @extend .l50p;
+                width:1174px;
+                height:138px;
+                @extend .bg-cover;
+                background-image:url(#{$path}title_lines_large_2x.png);
+                margin-left:-587px;
+                margin-top:-69px;
+            }
+        }
+        &__wrapper {
+            &:before,
+            &:after {
+                @extend .content-empty;
+                @extend .pos-abs;
+                @extend .t70p;
+                @extend .h30v;
+                @extend .w1px;
+                opacity:0.09;
+                background:linear-gradient(to top, rgba($white,1) 50%, rgba($white,0));
+            }
+            &:before {
+                @extend .l0;
+            }
+            &:after {
+                @extend .r0;
+            }
+        }
+    }
+    .stand {
+        @extend .pos-rel;
+        @extend .w100p;
+        @extend .m0-auto;
+        max-width:1600px;
+
+        &__image {
+            @extend .w100p;
+        }
+        &__title {
+            @extend .pos-centered-h;
+            @extend .t20p;
+            @extend .fontFamily-bork;
+            @extend .fontSize-18;
+            @extend .text-uppercase;
+            @extend .nowrap;
+
+            &:before {
+                @extend .content-empty;
+                @extend .pos-abs;
+                @extend .t--30;
+                @extend .r50p;
+                width:560px;
+                @extend .h1px;
+                @extend .opacity-80;
+                @extend .bg-orangeLight;
+                margin:7px 20px 0 0;
+            }
+            span {
+                @extend .c-gray;
+            }
+        }
+        .ui-cover__link {
+            @extend .pos-centered-h;
+            @extend .b-xl;
+            width:690px;
+        }
+    }
+}

@@ -1,0 +1,91 @@
+.player {
+    @extend .display-block;
+    @include abs(fixed);
+    @extend .pointerEvents-none;
+    @extend .visibility-hidden;
+    transition:visibility 0s 0.5s;
+    @extend .zIndex-100;
+
+    &[data-open="true"]{
+        @extend .pointerEvents-all;
+        @extend .visibility-visible;
+        @extend .transition-none;
+
+        &:before {
+            @extend .opacity-100;
+            transition:opacity .5s $cubic28;
+        }
+        .player__screen {
+            @extend .scale-100;
+            @extend .opacity-100;
+            transition:opacity .3s $cubic28, transform .5s $cubic28;
+        }
+        .player__close {
+            @extend .scale-100;
+            transition:transform .5s $cubic28 0.3s;
+        }
+    }
+    &:before {
+        @extend .content-empty;
+        @include abs();
+        @extend .opacity-0;
+        @extend .willChange-opacity;
+        transition:opacity .3s $cubic28;
+        @extend .bg-black1b;
+    }
+    .player {
+        &__screen {
+            @include accelerate();
+            @include abs();
+            background-color:#000;
+            @extend .scale-80;
+            @extend .opacity-0;
+            @extend .willChange-tp;
+            transition:opacity .15s $cubic28, transform .3s $cubic28;
+        }
+        &__container {
+            @extend .pos-centered;
+            width:75.78vw;
+            height:42.65vw;
+            // width:970px;
+            // height:546px;
+            @extend .maxW-100v;
+            @extend .maxH-100v;
+
+            html.d-tablet.r-landscape & {
+                width:940px;
+            }
+            html.d-phone & {
+                @extend .w100v;
+                @extend .h100v;
+            }
+        }
+        &__close {
+            @extend .pos-abs;
+            top:45px;
+            right:45px;
+            @include ui-basic("close_thin", 30px, 30px);
+            @extend .opacity-75;
+            @extend .cursor-pointer;
+            @extend .scale-0;
+            @extend .willChange-tp;
+            transition:transform .3s $cubic28, opacity .2s $cubic215;
+
+            html.d-phone & {
+                top:25px;
+                right:22px;
+                @extend .w26;
+                @extend .h26;
+            }
+            &:after {
+                @extend .content-empty;
+                @include abs();
+                transform:scale(3);
+                @extend .borderRadius-circle;
+            }
+            &:hover {
+                @extend .opacity-100;
+            }
+        }
+    }
+}

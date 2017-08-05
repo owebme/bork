@@ -1,0 +1,79 @@
+<product-columns class="columns">
+
+    <div class="column__left">
+        <div class="product__title">
+            <div class="product__title__text">
+                <span>{ item.label }</span>{ item.title }
+            </div>
+        </div>
+    </div>
+    <div class="column__center">
+        <div class="column__center__overlay"></div>
+        <div class="nav__status">
+            <div class="nav__status__progress"></div>
+            <div class="nav__status__num">
+                0<div class="nav__status__num__items__overflow">
+                    <div class="nav__status__num__items" data-slide="{ STATE.slide }">
+                        <div each={ item in _.range(item.gallery.length) } no-reorder class="nav__status__num__item">{ item + 1 }</div>
+                    </div>
+                </div>
+                <div class="nav__status__label">{ item.gallery.length }</div>
+            </div>
+        </div>
+        <div class="product__options">
+            <div if={ i < 3 } each={ item, i in item.features } each={ item in item.features } no-reorder class="product__options__item" data-index="{ i }">
+                <div class="ui-product__option" data-item="{ item.icon }"></div>
+            </div>
+            <div if={ item.features[3] } class="product__options__item -left" data-index="3">
+                <div class="ui-product__option" data-item="{ item.features[3].icon }"></div>
+            </div>
+            <div if={ item.features[4] } class="product__options__item -right" data-index="4">
+                <div class="ui-product__option" data-item="{ item.features[4].icon }"></div>
+            </div>
+            <div if={ item.video } class="product__video">
+                <div onClick={ openVideo } onUpdate="none" class="product__video__play"></div>
+            </div>
+        </div>
+    </div>
+    <div class="column__right">
+        <div class="product__buy">
+            <div class="product__buy__price">{ item.price }</div>
+            <div class="product__buy__divider"></div>
+            <div class="product__buy__button"></div>
+        </div>
+        <div class="product__features">
+            <div class="product__features__text">{ item.text }</div>
+            <div class="product__features__items">
+                <div each={ item, i in item.features } no-reorder class="product__features__item">
+                    <div class="product__features__item__title">{ item.title }</div>
+                    <div class="product__features__item__text">{ item.text }</div>
+                    <div class="product__features__item__image__overflow">
+                        <div class="product__features__item__image" style="background-image:url({ item.photo });" data-progressive-image></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+
+    var $ = this;
+
+    $.on("mount", function(){
+        $.STATE = $.parent.STATE;
+        $.player = app.$root.tags["section-player"];
+    });
+
+    $.on("update", function(){
+        $.item = $.parent.item;
+    });
+
+    $.openVideo = function(){
+        if ($.player){
+            $.player.show($.item.video);
+        }
+    };
+
+</script>
+
+</product-columns>

@@ -1,0 +1,225 @@
+promo-gold {
+    $path: "#{$pathImages}promo/gold/";
+
+    @extend .pos-rel;
+    margin-bottom:160px;
+
+    .top {
+        @extend .pos-rel;
+
+        &__title {
+            @extend .pos-centered;
+            width:1023px;
+            height:112px;
+            @extend .overflow-hidden;
+
+            &__parallax {
+                @extend .pos-abs;
+                @extend .t50p;
+                @extend .l50p;
+                width:1024px;
+                height:1024px;
+                margin:-620px 0 0 -512px;
+                @extend .bg-cover;
+                background-image:url(#{$path}title_parallax.jpg);
+                filter:brightness(1.3) contrast(1.4) saturate(0);
+
+                &:after {
+                    @extend .content-empty;
+                    @include abs();
+                    @extend .bg-orangeLight;
+                    @extend .opacity-40;
+                }
+            }
+            &:after {
+                @extend .content-empty;
+                @include abs();
+                @extend .bg-cover;
+                background-image:url(#{$path}title_large_2x.png);
+            }
+        }
+        &__text {
+            @extend .fontSize-24;
+            @extend .lineHeight-26;
+            @extend .fontFamily-bork;
+            @extend .letterSpacing-s;
+
+            &[data-pos="top-left"]{
+                @extend .pos-abs;
+                @extend .t50p;
+                @extend .r100p;
+                margin:-77px 12px 0 0;
+                @extend .c-orangeLight;
+
+                &:before {
+                    @extend .content-empty;
+                    @extend .pos-abs;
+                    @extend .t50p;
+                    @extend .r100p;
+                    @extend .mr-s;
+                    @extend .mt4;
+                    width:600px;
+                    @extend .h2px;
+                    @extend .bg-orangeLight;
+                    @extend .opacity-40;
+                }
+            }
+            &[data-pos="bottom-left"]{
+                @extend .pos-abs;
+                @extend .t50p;
+                @extend .r100p;
+                margin:70px 178px 0 0;
+            }
+            &[data-pos="bottom-right"]{
+                font-size:80px;
+                line-height:80px;
+                @extend .opacity-65;
+                @extend .c-orangeLight;
+                @extend .fontWeight-bold;
+                @extend .pos-abs;
+                @extend .t50p;
+                @extend .l100p;
+                margin:70px 0 0 -18px;
+                @extend .text-uppercase;
+
+                &:before {
+                    @extend .content-empty;
+                    @extend .pos-abs;
+                    @extend .t100p;
+                    @extend .l100p;
+                    @extend .ml-xs;
+                    @extend .mt--xs;
+                    width:600px;
+                    @extend .h2px;
+                    @extend .bg-orangeLight;
+                    @extend .opacity-60;
+                }
+            }
+        }
+    }
+    .grid__item {
+        @extend .zIndex-1;
+    }
+    .picture {
+        @include abs();
+        @extend .bg-cover;
+        background-image:url(#{$path}slide17.jpg);
+        @extend .overflow-hidden;
+
+        &__wrapper {
+            @include abs();
+        }
+        // &:after {
+        //     @extend .content-empty;
+        //     @include abs();
+        //     @extend .bg-black2a;
+        //     @extend .opacity-15;
+        // }
+    }
+    .slider__parallax {
+        @extend .pos-abs;
+        @extend .t0;
+        min-width:480px;
+        @extend .w100p;
+        @extend .mt--l;
+        @extend .bg-black1b;
+        height:580px;
+
+        &[data-pos="left"]{
+            @extend .r0;
+
+            .slider__parallax__image {
+                &.-back {
+                    background-image:url(#{$path}slide11.jpg);
+                }
+                &.-front {
+                    background-image:url(#{$path}slide15b.jpg);
+                }
+            }
+        }
+        &[data-pos="right"]{
+            @extend .l0;
+
+            .slider__parallax__image {
+                &.-back {
+                    background-image:url(#{$path}slide7.jpg);
+                }
+                &.-front {
+                    background-image:url(#{$path}slide14b.jpg);
+                }
+            }
+        }
+        &__image {
+            @include abs();
+            @extend .bg-cover;
+            will-change:clip;
+
+            &.-front {
+                clip:rect(0, auto, auto, 0);
+            }
+        }
+    }
+    .layer {
+        @extend .hidden-xs;
+        @extend .pos-abs;
+        @extend .bg-cover;
+        @extend .pointerEvents-none;
+        @extend .zIndex-10;
+    }
+    .orange {
+        &-left {
+            top:600px;
+            left:-200px;
+            width:225px;
+            height:211px;
+            background-image:url(#{$path}orange-left.png);
+        }
+        &-right {
+            @extend .t50;
+            @extend .r0;
+            width:279px;
+            height:247px;
+            background-image:url(#{$path}orange-right.png);
+        }
+        &-bottom {
+            @extend .t75p;
+            @extend .r25p;
+            width:175px;
+            height:165px;
+            background-image:url(#{$path}orange-bottom.png);
+        }
+    }
+    .-parallax,
+    .-parallax-smooth {
+        @include accelerate();
+        @extend .willChange-transform;
+    }
+    .center__block {
+        @extend .flex-column-centered;
+
+        .item {
+            @extend .h35p;
+            @extend .text-center;
+
+            &__text {
+                @extend .fontFamily-akzidenzExt;
+                @extend .pt-xxs;
+                @extend .letterSpacing-xs;
+                @extend .text-uppercase;
+            }
+        }
+        .icon__instagram {
+            margin:0 auto 20px;
+            @include ui-basic("instagram", 40px, 40px);
+        }
+        .icon__like {
+            margin:0 auto -10px;
+            @extend .w70;
+            @extend .h70;
+
+            path {
+                @extend .fill-orangeLight;
+            }
+        }
+    }
+}

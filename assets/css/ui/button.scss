@@ -1,0 +1,31 @@
+.btn {
+    @extend .display-inlineBlock;
+    @extend .fontWeight-5;
+    @extend .text-uppercase;
+    @extend .text-center;
+    @extend .nowrap;
+    border:2px solid $orange;
+    transition:opacity .3s ease, background-color .3s ease, transform .3s $cubic215;
+    will-change:background-color, opacity, transform;
+
+    &:hover {
+        @extend .bg-orange;
+    }
+    &:active {
+        @extend .scale-85;
+    }
+    &.btn-m {
+        font-size:14px;
+        letter-spacing:1.4px;
+        line-height:15px;
+        padding:18px 29px;
+        border-radius:27.5px;
+    }
+    &.btn-s {
+        font-size:11px;
+        line-height:25px;
+        letter-spacing:.1em;
+        border-radius:18px;
+        padding:3px 20px;
+    }
+}

@@ -1,0 +1,28 @@
+<premium-products class="section clear overflow-hidden mb--1" data-component-list="ProgressiveImage">
+
+    <div onClick={ onSelect } each={ item in app.store.products } no-reorder class="product { -active : item.active }">
+        <div class="product__content">
+            <div class="product__text">{ item.text }</div>
+            <div class="product__image__container">
+                <div class="product__image" style="background-image:url({ item.image })" data-progressive-image></div>
+            </div>
+        </div>
+    </div>
+
+<script>
+
+    var $ = this;
+
+    $.onSelect = function(){
+        var item = this.item;
+        item.active = true;
+
+        app.$root.tags["section-product"].show(this.item.id, function(){
+            item.active = false;
+            $.update();
+        });
+    };
+
+</script>
+
+</premium-products>

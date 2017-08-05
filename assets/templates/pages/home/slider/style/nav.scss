@@ -1,0 +1,95 @@
+.home {
+    .slider {
+        &__nav {
+            @extend .display-block;
+            @extend .pos-centered-h;
+            @extend .t60;
+            @extend .flex-column-centered;
+            top:$navbar_height + 7px;
+            @extend .zIndex-3;
+
+            &__arrows {
+                @extend .pos-rel;
+                @extend .h70;
+                @extend .w70;
+                @extend .zIndex-1;
+
+                &:before {
+                    @extend .content-empty;
+                    @extend .pos-centered-h;
+                    @extend .w1px;
+                    @extend .h100p;
+                    @extend .bg-white;
+                    @extend .opacity-20;
+                }
+            }
+            &__arrow {
+                &__left,
+                &__right {
+                    @extend .pos-abs;
+                    @extend .t-xxs;
+                    width:15px;
+                    height:22px;
+                    @extend .opacity-55;
+                    @extend .cursor-pointer;
+                    @extend .transition-default;
+
+                    &:hover {
+                        @extend .opacity-100;
+                    }
+                    &:before {
+                        @extend .content-empty;
+                        @include abs();
+                        @include ui-basic("arrow_right");
+                        @extend .btn-active;
+                    }
+                }
+                &__left {
+                    @extend .l0;
+                    transform:scaleX(-1);
+                }
+                &__right {
+                    @extend .r0;
+                }
+            }
+        }
+    }
+}
+
+body > .home {
+    @include res("xs") {
+        .slider {
+            &__nav {
+                top:100px;
+
+                &:before,
+                &:after {
+                    content:"";
+                    position:absolute;
+                    top:15px;
+                    width:50vw;
+                    height:1px;
+                    background-color:$white;
+                    opacity:0.2;
+                }
+                &:before {
+                    left:-50vw;
+                }
+                &:after {
+                    right:-50vw;
+                }
+                &__arrows {
+                    &:before {
+                        opacity:0.3;
+                    }
+                }
+                &__arrow {
+                    &__left,
+                    &__right {
+                        opacity:1;
+                    }
+                }
+            }
+        }
+    }
+}

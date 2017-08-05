@@ -1,0 +1,13 @@
+@each $title, $size in (0, 0), (xs, .2px), (s, .4px), (m, 1px), (l, 1.4px), (xl, 2px), (xxl, 3px), (xxxl, 4px), (xxxxl, 5px){
+    .letterSpacing-#{$title} {
+        letter-spacing:$size;
+    }
+}
+@each $title, $size in (xs, .2px), (s, .4px), (m, 1px), (l, 1.4px), (xl, 2px), (xxl, 3px), (xxxl, 4px), (xxxxl, 5px){
+    .letterSpacing--#{$title} {
+        letter-spacing:-$size;
+    }
+}
+.letterSpacing-5-5 {
+    letter-spacing:5.5px;
+}
